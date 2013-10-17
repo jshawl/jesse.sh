@@ -1,0 +1,13 @@
+<p>Flexbox is ready. Even <a href='http://caniuse.com/flexbox'>caniuse thinks so</a>. At a whopping 35%, you likely won&#8217;t be using Flexbox in production environments until browser versions are a thing of the past.<!-- more --> But it&#8217;s ready for me.</p>
+
+<p>I&#8217;ve begun working on a small-ish micro site that&#8217;s meant to be a reference for web developers. shh.. it&#8217;s not quite ready. Since the target audience will be front end developers, I&#8217;ve decided to completely abandon floats and use flexbox for positioning elements on the page. This will be a place for me to take notes on what was confusing and how I found the answer I was looking for.</p>
+<h2 id='#'>Getting Started</h2>
+<p>Cross browser flexbox support has become somewhat of a CSS nightmare. If you&#8217;re super concerned about the nitty gritty of which vendor prefixes to use and whether new or old Flexbox syntax will work for you, I recommend these articles:</p>
+
+<ol>
+<li><a href='http://dev.opera.com/articles/view/advanced-cross-browser-flexbox/'>Advanced Cross Browser Flexbox</a></li>
+
+<li><a href='http://css-tricks.com/using-flexbox/'>Mixing Old and New for the Best Browser Support</a></li>
+</ol>
+
+<p>I&#8217;d rather not do the dirty work of dealing with vendor prefixes, so I&#8217;ve added <a href='https://github.com/ai/autoprefixer'>Autoprefixer</a> to my workflow. I&#8217;m using Grunt to watch Scss files, compile them, and automatically add vendor prefixes. <a href='https://github.com/jshawl/open-source-workflow/blob/master/css/Gruntfile.js'>View the gruntfile</a>.</p>

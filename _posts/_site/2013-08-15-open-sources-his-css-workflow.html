@@ -1,0 +1,37 @@
+<p>After reading <a href='http://css-tricks.com/autoprefixer/'>Andrey Sitnik&#8217;s post on Autoprefixer</a>, I knew I had to try out <a href='http://gruntjs.com/'>Grunt.js</a><!-- more --></p>
+
+<p>I&#8217;ve done it all: Writing &#8216;vanilla&#8217; CSS and adding vendor prefixes by hand, using <a href='http://compass-style.org/'>Compass</a> for its valuable mixins, using client-side tools like Lea Verou&#8217;s <a href='http://leaverou.github.io/prefixfree/'>prefixfree.js</a>. But nothing felt right.</p>
+
+<p>I was spending too much time worrying about supporting my own browser (-webkit) instead of building kickass websites. I&#8217;ve finally found a workflow where I don&#8217;t have to worry about these things. I&#8217;m a big fan of Sass, and wanted to find a setup where the CSS processing was managed by one tool. I&#8217;m sad to say goodbye to <a href='https://incident57.com/codekit/'>CodeKit</a> for now, but if you&#8217;re getting started out with Sass and/or other prepocessors, I recommend the application without hesitation. So let&#8217;s get to it!</p>
+
+<h3 id='oh_hey_grunt'>Oh Hey, Grunt!</h3>
+
+<p>Next step, we&#8217;ll start a local Grunt project. If you don&#8217;t already have Grunt.js installed, <a href='http://gruntjs.com/getting-started'>check out the docs</a>. To install the Grunt command line interface, we just need to run in the terminal:</p>
+<div class='highlight'><pre><code class='bash'> <span class='nv'>$ </span>npm install -g grunt-cli
+</code></pre></div>
+<p>Next, we&#8217;ll get a local Grunt project started by adding a</p>
+
+<h4 id='packagejson'>package.json</h4>
+<div class='highlight'><pre><code class='javascript'><span class='p'>{</span>
+  <span class='s2'>&quot;name&quot;</span><span class='o'>:</span> <span class='s2'>&quot;my-project-name&quot;</span><span class='p'>,</span>
+  <span class='s2'>&quot;version&quot;</span><span class='o'>:</span> <span class='s2'>&quot;0.1.0&quot;</span><span class='p'>,</span>
+  <span class='s2'>&quot;devDependencies&quot;</span><span class='o'>:</span> <span class='p'>{</span>
+    <span class='s2'>&quot;grunt&quot;</span><span class='o'>:</span> <span class='s2'>&quot;~0.4.1&quot;</span>
+  <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>and a basic &#8216;hello world&#8217; Gruntfile.js just to make sure things are installed correctly.</p>
+
+<h4 id='gruntfilejs'>Gruntfile.js</h4>
+<div class='highlight'><pre><code class='js'><span class='nx'>module</span><span class='p'>.</span><span class='nx'>exports</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>grunt</span><span class='p'>)</span> <span class='p'>{</span>
+  <span class='nx'>grunt</span><span class='p'>.</span><span class='nx'>registerTask</span><span class='p'>(</span><span class='s1'>&#39;default&#39;</span><span class='p'>,</span> <span class='s1'>&#39;just a basic hello world&#39;</span><span class='p'>,</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
+    <span class='nx'>grunt</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>.</span><span class='nx'>writeln</span><span class='p'>(</span><span class='s1'>&#39;Grunt is installed and working!&#39;</span><span class='p'>);</span>
+  <span class='p'>});</span>
+<span class='p'>};</span>
+</code></pre></div>
+<p>At this point, you should be able to run</p>
+<div class='highlight'><pre><code class='bash'> <span class='nv'>$ </span>grunt
+</code></pre></div>
+<p>and it will output &#8216;Grunt is installed and working&#8217; in the console. View the code <a href='https://github.com/jshawl/open-source-workflow/tree/d9ca4a09da3e46d90bb9513ccf08a1ed1371501f/css'>on GitHub</a>.</p>
+
+<p>Did it work?! Awesome!</p>

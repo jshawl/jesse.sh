@@ -1,0 +1,54 @@
+<p>I&#8217;ve been a vim user for a little over a year now. I&#8217;m much faster developing now than when I worked with Sublime Text, and it&#8217;s a bit like playing a musical instrument.</p>
+
+<p>Opening up a project always starts in that project&#8217;s directory with</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>vim .
+</code></pre></div>
+<p>We&#8217;re presented with a directory listing which we can navigate through with the <code>h j k l</code> keys and open up a file or enter a director by pressing <code>&lt;Enter&gt;</code></p>
+
+<p>I like to have three tabs open in vim:</p>
+
+<ol>
+<li>All CSS files</li>
+
+<li>JS files</li>
+
+<li>Markup Files</li>
+</ol>
+
+<p>This helps me focus on one task at a time, and encourages a looser coupling between the data and presentation layers.</p>
+
+<p>Let&#8217;s open up a few scss files by going into the scss directory and press <code>&lt;Enter&gt;</code> on the first file we need. I&#8217;ll start with <code>style.scss</code>, which contains mostly <code>@import</code> statements and the ties the entire architecture together.</p>
+<div class='highlight'><pre><code class='bash'><span class='err'>&quot;</span> <span class='o'>============================================================================</span>
+../
+.git/
+img/
+js/
+scss/
+.gitignore
+404.html*
+Gruntfile.js
+README.md
+favicon.ico*
+humans.txt*
+index.html*
+package.json
+</code></pre></div>
+<p>I often keep two vertically split windows open in this tab, containing the main style.scss, and any .scss file I&#8217;m working on at some time.</p>
+
+<p>To open up our <code>_variables.scss</code> file and split the window vertically, we can type</p>
+<div class='highlight'><pre><code class='bash'>  :vsp _variables.scss
+</code></pre></div>
+<p>If I&#8217;m not sure of the exact filename, but want to open up a vertical split in the current directory, which in this case is the <code>scss</code> directory, I type:</p>
+<div class='highlight'><pre><code class='bash'>  :Vex
+</code></pre></div>
+<p>Sometimes I find that I need to create a new file in the same directory, so while in the file explorer window, I type <code>%</code> which allows me to enter a filename for our new addition to the buffer. The file will not be created until it&#8217;s saved with a <code>:w</code></p>
+<img src='/img/vim1.png' style='max-width:100%;' />
+<p>Next, I open up a new tab with all the JavaScript files I&#8217;m working on, which is usually a main.js file. I open the main.js file in a new tab with</p>
+<div class='highlight'><pre><code class='bash'>  :tabe js/main.js
+</code></pre></div>
+<p>Lastly, I open up a third tab with any markup-related files I&#8217;m working on.</p>
+<div class='highlight'><pre><code class='bash'>  :tabe index.html
+</code></pre></div><img src='/img/vim2.png' style='max-width:100%;' />
+<p>I now have three tabs open between which I can quickly jump by pressing <code>gt</code> in normal mode. This will just cycle through the tabs. If I need to go to the third tab, I can prefix the <code>gt</code> command with a count:</p>
+<div class='highlight'><pre><code class='bash'>  3gt
+</code></pre></div>

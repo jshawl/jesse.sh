@@ -1,0 +1,120 @@
+<p data-default-tab='result' data-user='jshawl' data-theme-id='790' class='codepen' data-slug-hash='bcjyH' data-height='244'>See the Pen <a href='http://codepen.io/jshawl/pen/bcjyH'>bcjyH</a> by Jesse Shawl (<a href='http://codepen.io/jshawl'>@jshawl</a>) on <a href='http://codepen.io'>CodePen</a></p><pre style='border: solid 3px red; background-color: pink' class='markdown-html-error'>REXML could not parse this XML/HTML: 
+&lt;script async src=&quot;http://codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;</pre>
+<p>I&#8217;m a huge fan of the button styles on <a href='http://css-tricks.com/'>CSS Tricks</a>, and wanted to create my own.</p>
+
+<p>When I inspected the element, I saw there was a ridiculous amount of box-shadows with alternating hex values<!-- more -->:</p>
+<img src='/img/css-tricks-buttons.png' style='display:block;max-width:100%;margin:40px auto' alt='' />
+<p>My first attempt of recreating these buttons involved me writing out the box shadows by hand. After about 10 minutes of guesswork and less than desirable results, I knew there had to be a better way.</p>
+
+<h3 id='looking_for_a_pattern'>Looking for a pattern</h3>
+
+<p>Since the box shadow values are growing incrementally in a systematic way, we can loop through some arbitrary number with Sass.</p>
+<div class='highlight'><pre><code class='scss'><span class='nc'>.button</span><span class='p'>{</span>
+ <span class='k'>@for</span> <span class='nv'>$i</span> <span class='ow'>from</span> <span class='mi'>0</span> <span class='ow'>through</span> <span class='mi'>10</span><span class='p'>{</span>
+    <span class='c1'>//make some box shadows maybe like:</span>
+    <span class='na'>box-shadow</span><span class='o'>:</span> <span class='nv'>$i</span><span class='o'>+</span><span class='no'>px</span> <span class='nv'>$i</span><span class='o'>+</span><span class='no'>px</span> <span class='mi'>0</span><span class='kt'>px</span> <span class='mh'>#bada55</span><span class='p'>;</span>
+ <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>I first thought we could just embed a forloop in a declaration, but doing this will just keep adding box-shadow properties to the rule, overwriting each previous one as we loop through. Additionally, we&#8217;ve got no way to handle the alternating colors.</p>
+
+<p>I decided the best way to handle this was to use Sass to build a string of values, such that the desired CSS output was something like:</p>
+<div class='highlight'><pre><code class='scss'>  <span class='na'>box-shadow</span><span class='o'>:</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>0</span><span class='kt'>px</span> <span class='n'>color1</span><span class='o'>,</span> <span class='cm'>/* first arbitrary number </span><span class='c'>*/</span>
+              <span class='mi'>0</span><span class='kt'>px</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='n'>color2</span><span class='o'>,</span> <span class='cm'>/* first arbitrary number </span><span class='c'>*/</span>
+              <span class='mi'>2</span><span class='kt'>px</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='n'>color1</span><span class='o'>,</span> <span class='cm'>/* second arbitrary number </span><span class='c'>*/</span>
+              <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='n'>color2</span><span class='p'>;</span> <span class='cm'>/* second arbitrary number */</span>  
+</code></pre></div>
+<p>Ah, yes. A pattern!</p>
+
+<p>What we&#8217;re trying to achieve is for each arbitrary number, we want one box shadow 1 pixel visible to the right in one color, and one box shadow 1 pixel visible on the bottom in another color.</p>
+
+<p>That is, for each <code>$i</code> in the loop, we need to do two things:</p>
+
+<ol>
+<li>Handle the box shadow visible on the right</li>
+
+<li>Handle the box shadow visible on the bottom</li>
+</ol>
+
+<p>Once we have each of these things, we can build up a string of values and add them to our <code>box-shadow</code> property. In order to build a string, we&#8217;ll need a Sass function.</p>
+
+<p><pre style='border: solid 3px red; background-color: pink' class='markdown-html-error'>REXML could not parse this XML/HTML: 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;  &lt;span class=&quot;k&quot;&gt;@function&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;boxShadowString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;offset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// this function takes two arguments: an offset (how 3d the button will be)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// and a color: we&amp;#39;ll use Sass to darken the color to get alternating&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// box shadow colors.&lt;/span&gt;</pre></p>
+<span class='c1'>// create an empty variable: this will be the string to which we</span><span class='c1'>// append our box-shadow values</span><span class='nv'>$box-shadow</span><span class='c1'>//loop through however many numbers ($offset)</span>
+<p><span class='k'>@for</span> <span class='nv'>$i</span> <span class='ow'>from</span> <span class='mi'>0</span> <span class='ow'>through</span> <span class='nv'>$offset</span><span class='p'>{</span></p>
+
+<pre><code>&lt;span class=&quot;c1&quot;&gt;// create the value for the box-shadow visible to the right&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// create the value for the box-shadow visible to the bottom&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// add the box shadow visible to the right string to our $box-shadow variable&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comma&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// add the box shadow visible to the bottom string to our $box-shadow variable&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;comma&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;</code></pre>
+<span class='p'>}</span><span class='c1'>// return the string of all of these values</span>
+<p><span class='k'>@return</span> <span class='err'>$</span><span class='nt'>box-shadow</span><span class='o'>;</span> <span class='p'>}</span> &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</p>
+
+<p>Note: the <code>append</code> method in sass takes two arguments, and an optional third.</p>
+
+<p>They are: <code>append(THING_APPENDED_TO, THING_APPENDING, SEPARATOR)</code>. We&#8217;re using &#8216;comma&#8217; as the third argument to get a comma separated list of each of these box-shadow values. You can read more about the <code>append()</code> method here <a href='http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#append-instance_method'>http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#append-instance_method</a>.</p>
+
+<h3 id='3difiyng_the_button'>3d-ifiyng the button</h3>
+
+<p>Now, we can add this function to our button:</p>
+<div class='highlight'><pre><code class='css'><span class='nc'>.button</span><span class='p'>{</span>
+  <span class='n'>box</span><span class='o'>-</span><span class='n'>shadow</span><span class='o'>:</span><span class='n'>boxShadowString</span><span class='p'>(</span><span class='m'>10</span><span class='o'>,</span> <span class='m'>#bada55</span><span class='p'>);</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>It <em>looks</em> super 3D, but there&#8217;s no interactivity. Let&#8217;s add a hover state that moves the button up and to the left 2 pixels, and makes the box shadow 2 pixels longer.</p>
+<div class='highlight'><pre><code class='css'><span class='nc'>.button</span><span class='p'>{</span>
+  <span class='n'>box</span><span class='o'>-</span><span class='n'>shadow</span><span class='o'>:</span><span class='n'>boxShadowString</span><span class='p'>(</span><span class='m'>10</span><span class='o'>,</span> <span class='m'>#bada55</span><span class='p'>);</span>
+  <span class='o'>&amp;:</span><span class='n'>hover</span><span class='err'>{</span>
+    <span class='n'>transform</span><span class='o'>:</span><span class='n'>translate</span><span class='p'>(</span><span class='m'>-2px</span><span class='o'>,</span> <span class='m'>-2px</span><span class='p'>);</span> <span class='c'>/* move the button up and to the left */</span>
+    <span class='n'>box</span><span class='o'>-</span><span class='n'>shadow</span><span class='o'>:</span><span class='n'>boxShadowString</span><span class='p'>(</span><span class='m'>12</span><span class='o'>,</span> <span class='m'>#bada55</span><span class='p'>);</span> <span class='c'>/* make the box shadow 2px longer */</span>
+  <span class='p'>}</span>
+<span class='err'>}</span>
+</code></pre></div>
+<p>And finally, we can add an <code>:active</code> state to change the button style on click.</p>
+<div class='highlight'><pre><code class='css'><span class='nc'>.button</span><span class='p'>{</span>
+  <span class='n'>box</span><span class='o'>-</span><span class='n'>shadow</span><span class='o'>:</span><span class='n'>boxShadowString</span><span class='p'>(</span><span class='m'>10</span><span class='o'>,</span> <span class='m'>#bada55</span><span class='p'>);</span>
+  <span class='o'>&amp;:</span><span class='n'>hover</span><span class='err'>{</span>
+    <span class='n'>transform</span><span class='o'>:</span><span class='n'>translate</span><span class='p'>(</span><span class='m'>-2px</span><span class='o'>,</span> <span class='m'>-2px</span><span class='p'>);</span> <span class='c'>/* move the button up and to the left */</span>
+    <span class='n'>box</span><span class='o'>-</span><span class='n'>shadow</span><span class='o'>:</span><span class='n'>boxShadowString</span><span class='p'>(</span><span class='m'>12</span><span class='o'>,</span> <span class='m'>#bada55</span><span class='p'>);</span> <span class='c'>/* make the box shadow 2px longer */</span>
+  <span class='p'>}</span>
+  <span class='o'>&amp;</span><span class='nd'>:active</span><span class='p'>{</span>
+    <span class='n'>transform</span><span class='o'>:</span><span class='n'>translate</span><span class='p'>(</span><span class='m'>9px</span><span class='o'>,</span> <span class='m'>9px</span><span class='p'>);</span> <span class='c'>/* move the button all the way down, except for a 1 pixel offset */</span>
+    <span class='n'>box</span><span class='o'>-</span><span class='n'>shadow</span><span class='o'>:</span><span class='n'>boxShadowString</span><span class='p'>(</span><span class='m'>1</span><span class='o'>,</span> <span class='m'>#bada55</span><span class='p'>);</span>
+  <span class='p'>}</span>
+<span class='err'>}</span>
+</code></pre></div>
+<p>At the moment this works, but there&#8217;s a huge amount of repeated and tightly coupled code here. The <code>box-shadow</code> in the <code>:hover</code> state should just be 2px greater than whatever the <code>$offset</code> is <em>and</em> the <code>:active</code> state&#8217;s <code>transform</code> property should be the <code>$offset</code> minus 1 pixel.</p>
+
+<p>I know! We can use a mixin!</p>
+
+<p><div class='highlight'><pre><code class='css'>  <span class='k'>@mixin</span> <span class='nt'>threeDify</span><span class='o'>(</span><span class='err'>$</span><span class='nt'>offset</span><span class='o'>,</span> <span class='err'>$</span><span class='nt'>color</span><span class='o'>)</span><span class='p'>{</span>
+    <span class='c'>/*do some base stuff*/</span> 
+    <span class='nt'>box-shadow</span><span class='nd'>:boxShadowString</span><span class='o'>(</span><span class='err'>$</span><span class='nt'>offset</span><span class='o'>,</span> <span class='err'>$</span><span class='nt'>color</span><span class='o'>);</span>
+    <span class='o'>&amp;</span><span class='nd'>:hover</span><span class='p'>{</span>
+      <span class='n'>box</span><span class='o'>-</span><span class='n'>shadow</span><span class='o'>:</span><span class='n'>boxShadowString</span><span class='p'>(</span><span class='err'>$</span><span class='n'>offset</span><span class='o'>+</span><span class='m'>2</span><span class='o'>,</span> <span class='err'>$</span><span class='k'>color</span><span class='p'>);</span>
+      <span class='n'>transform</span><span class='o'>:</span><span class='n'>translate</span><span class='p'>(</span><span class='m'>-2px</span><span class='o'>,-</span><span class='m'>2px</span><span class='p'>);</span>
+    <span class='p'>}</span>
+    <span class='o'>&amp;</span><span class='nd'>:active</span><span class='p'>{</span>
+      <span class='n'>box</span><span class='o'>-</span><span class='n'>shadow</span><span class='o'>:</span><span class='n'>boxShadowString</span><span class='p'>(</span><span class='m'>1</span><span class='o'>,</span> <span class='err'>$</span><span class='k'>color</span><span class='p'>);</span>
+      <span class='n'>transform</span><span class='o'>:</span><span class='n'>translate</span><span class='p'>(</span><span class='err'>$</span><span class='n'>offset</span> <span class='o'>-</span> <span class='m'>1</span><span class='o'>+</span><span class='k'>px</span><span class='o'>,</span> <span class='err'>$</span><span class='n'>offset</span> <span class='o'>-</span> <span class='m'>1</span><span class='o'>+</span><span class='k'>px</span><span class='p'>);</span>
+    <span class='p'>}</span>
+  <span class='p'>}</span>
+</code></pre></div></p>
+
+<p>And finally, we can make our button super 3D by <code>@include</code>&#8216;ing the mixin:</p>
+<div class='highlight'><pre><code class='css'>  <span class='nc'>.button</span><span class='p'>{</span>
+    <span class='k'>background</span><span class='o'>:</span><span class='m'>#bada55</span><span class='p'>;</span>
+    <span class='o'>@</span><span class='n'>include</span> <span class='n'>threeDify</span><span class='p'>(</span><span class='m'>10</span><span class='o'>,</span> <span class='m'>#bada55</span><span class='p'>);</span>
+  <span class='p'>}</span>
+</code></pre></div><br /><p data-default-tab='result' data-user='jshawl' data-theme-id='788' class='codepen' data-slug-hash='bcjyH' data-height='300'>See the Pen <a href='http://codepen.io/jshawl/pen/bcjyH'>bcjyH</a> by Jesse Shawl (<a href='http://codepen.io/jshawl'>@jshawl</a>) on <a href='http://codepen.io'>CodePen</a></p><pre style='border: solid 3px red; background-color: pink' class='markdown-html-error'>REXML could not parse this XML/HTML: 
+&lt;script async src=&quot;http://codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;</pre>
