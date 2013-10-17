@@ -16,6 +16,7 @@ body {
   background-color: #FFF;
   font: 13.34px Helvetica, Arial, sans-serif;
   font-size: small;
+  padding:1em;
   text-align: center;
 }
 
@@ -62,10 +63,18 @@ ul.posts span {
 
 .site {
   font-size: 115%;
-  text-align: justify;
-  width: 42em;
+  text-align: left;
   margin: 3em auto 2em;
   line-height: 1.5em;
+  -ms-word-break: break-all;
+      word-break: break-all;
+
+      /* Non standard for webkit */
+      word-break: break-word;
+
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
 
 .site .header a {
@@ -167,4 +176,8 @@ ul.posts span {
 .project__img{
   display:block;
   max-width:100%;
+}
+
+pre {
+  overflow:scroll;
 }
