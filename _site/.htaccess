@@ -1,0 +1,25 @@
+Options +FollowSymLinks -MultiViews -Indexes
+# Turn mod_rewrite on
+RewriteEngine On
+RewriteBase /
+
+
+RewriteCond %{HTTP_HOST} ^(www\.)?jshawl.com$ 
+RewriteRule (.*)$ http://jesse.sh/awl/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www.jesse.sh$
+RewriteRule (.*) http://jesse.sh/$1 [R=301]
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/awl/
+RewriteRule (.*) /awl/$1   [R=301]
+
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ /awl/ [L,R=301]
+
+ErrorDocument 404 /404.html
+
+RewriteCond %{REQUEST_URI} pocket-mark-all-as-read/$
+RewriteRule (.*) http://jesse.sh/awl/made/pocket-zero/

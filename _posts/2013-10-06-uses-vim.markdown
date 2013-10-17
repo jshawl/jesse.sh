@@ -1,0 +1,85 @@
+---
+layout: post
+published: false
+title:  "Using Vim"
+---
+
+I've been a vim user for a little over a year now. I'm much faster developing now than when I worked with Sublime Text, and it's a bit like playing a musical instrument. 
+
+Opening up a project always starts in that project's directory with
+
+{%highlight bash%}
+$ vim .
+{%endhighlight%}
+
+We're presented with a directory listing which we can navigate through with the `h j k l` keys and open up a file or enter a director by pressing `<Enter>`
+
+I like to have three tabs open in vim:
+
+1. All CSS files
+2. JS files
+3. Markup Files
+
+This helps me focus on one task at a time, and encourages a looser coupling between the data and presentation layers.
+
+Let's open up a few scss files by going into the scss directory and press `<Enter>` on the first file we need. I'll start with `style.scss`, which contains mostly `@import` statements and the ties the entire architecture together. 
+
+{%highlight bash%}
+" ============================================================================
+../
+.git/
+img/
+js/
+scss/
+.gitignore
+404.html*
+Gruntfile.js
+README.md
+favicon.ico*
+humans.txt*
+index.html*
+package.json
+{%endhighlight%}
+
+I often keep two vertically split windows open in this tab, containing the main style.scss, and any .scss file I'm working on at some time.
+
+To open up our `_variables.scss` file and split the window vertically, we can type 
+
+{% highlight bash %}
+  :vsp _variables.scss
+{% endhighlight %}
+
+If I'm not sure of the exact filename, but want to open up a vertical split in the current directory, which in this case is the `scss` directory, I type:
+
+{% highlight bash %}
+  :Vex
+{% endhighlight %}
+
+Sometimes I find that I need to create a new file in the same directory, so while in the file explorer window, I type `%` which allows me to enter a filename for our new addition to the buffer. The file will not be created until it's saved with a `:w`
+
+<img src='/img/vim1.png' style='max-width:100%;'>
+
+Next, I open up a new tab with all the JavaScript files I'm working on, which is usually a main.js file. I open the main.js file in a new tab with 
+
+{% highlight bash %}
+  :tabe js/main.js
+{% endhighlight %}
+
+Lastly, I open up a third tab with any markup-related files I'm working on. 
+
+
+{% highlight bash %}
+  :tabe index.html
+{% endhighlight %}
+
+<img src='/img/vim2.png' style='max-width:100%;'>
+
+I now have three tabs open between which I can quickly jump by pressing `gt` in normal mode. This will just cycle through the tabs. If I need to go to the third tab, I can prefix the `gt` command with a count:
+
+
+{% highlight bash %}
+  3gt
+{% endhighlight %}
+
+
+

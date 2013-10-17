@@ -1,0 +1,118 @@
+$black: #272822;
+html{
+	background:$black;
+}
+body{
+	color:#272822;
+	position:relative;  
+	background:#fff;  
+}
+a{
+	color:#1CA7DB;      
+}
+
+.site__header{
+	//border-bottom: 1px solid #eee; 
+}
+
+.abbrev{
+  border-bottom:1px solid #eee; 
+  margin:0;
+  padding:1em 0;    
+}
+
+h1 a,
+h2 a,  
+a h2{
+	color:#272822;   
+}
+
+h1 a, .site__nav a {
+	text-decoration: none;
+}
+
+.site__header,
+.site__nav,
+.site__footer{
+	background:#fff;
+	color:#B3B3B3;
+}
+
+.article__date,
+.site__nav a{
+	color:#B3B3B3;
+}
+
+.site__nav{	
+	li{
+		transition:all .2s ease;
+		position:relative;
+		&:before{
+			content:'';
+			display:block;
+			position:absolute;
+			width:100%;
+			height:.5em; 
+			z-index:10;
+			background:$black;
+			top:-.5em;
+			transition:all .2s ease;
+			@media all and (max-width:25em){
+				background:none;
+			}
+		}
+	}
+	li:hover:before{
+		top:0;  
+	}
+	a{
+		transition: all .2s ease;
+		&:hover, &.current{
+			color:darken(#B3B3B3, 35%);
+			
+		}
+	}
+}
+
+.site__feature--hire{
+	background:url(/img/about.jpg);
+    background-size: 100%;
+    background-position: 30% 60%;
+}
+
+.site__feature--home{
+	background:url(/img/desk.jpg);
+    background-size: 190%;
+    background-position: 50% 63%;
+    @media all and (min-width: 35em){
+    	background-size: 100%;
+    	background-position: 50% 63%;  
+    }
+}
+
+.site__feature--home.post{  
+	padding:1em 0 !important;  
+}
+
+.site__feature--projects{
+	background:url(/img/hire.jpg);
+    background-size: 113%;
+    background-position: 50% 31%;
+}
+
+.site__feature--img{
+	background-position:50% 50%; 
+	background-size:150%;   
+	background-image:url(/img/computer.jpg);
+}
+
+.icons{
+	background:#272822;
+	a{
+		color:inherit;
+		text-decoration: none;
+		&:hover{
+			color:#AD85FC;
+		}
+	}
+}

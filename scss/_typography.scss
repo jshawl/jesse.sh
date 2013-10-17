@@ -1,0 +1,96 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700|Merriweather:700,400,300,300italic);
+@font-face {
+  	font-family:icon;
+    src: url(/font/icons.woff); 
+}
+
+i{
+	font-family:'icon';
+	font-style: normal;
+} 
+
+body, .description{
+	font-family:'Merriweather';  
+	font-weight: 400;
+	line-height:1.75em;
+}
+
+@media all and(min-width:35em) {
+	body{
+		font-size:125%;
+	}
+}
+
+.site__footer{
+	font-family: 'Merriweather Sans';
+	text-align:center;
+}
+
+h1, h2, h3, h4,
+.site__header h1{
+  	font-weight: 700;
+    margin:0;
+    font-family: 'Merriweather Sans';  
+}
+
+h1,h2, h3, h4,
+.title {
+	font-family: 'Merriweather Sans';
+	font-weight:300; 
+}
+
+.title{
+	padding-left:1em;
+}
+
+h2{
+	margin-bottom:.5em;
+	letter-spacing:0em;
+	font-size: 2em;
+	letter-spacing: -.05em;
+	line-height: 1.25em;
+	@media all and (max-width: 25em){
+		font-size:1.5em;
+	}
+}
+
+h3{
+	margin-top:2em;
+	font-size:1.5em;
+	letter-spacing: -.05em;
+}
+
+.page-title{
+	font-family: 'Merriweather';
+	font-size:3em;
+	font-weight:700;
+	text-align: center;
+	padding:1em 0 1em 0;
+}
+
+.site__nav a{
+	font-weight:300;
+	font-family:'Merriweather Sans';
+}
+
+.site__header h1{
+	font-size: 1em;
+	font-weight: 300;
+	letter-spacing: -.05em;
+	font-family:'Merriweather Sans';
+}
+
+section{
+	h1{
+		font-size:2.5em;
+		line-height: 1;
+	}
+}
+
+.article__date{
+	font-size:.75em;
+}
+
+.icons{
+	font-size:2em;
+}

@@ -1,0 +1,11 @@
+name: Jesse Shawl
+pygments: true
+permalink: /awl/:title/
+markdown: rdiscount
+navigation:
+- text: Home
+  url: /awl/index.html
+- text: Projects
+  url: /awl/makes-things/index.html
+- text: About
+  url: /awl/is-all-about/index.html

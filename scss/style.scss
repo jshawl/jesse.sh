@@ -1,0 +1,17 @@
+@import 'helpers';
+@import 'layout';
+@import 'typography';
+@import 'fontawesome';
+@import 'theme';
+@import 'modules';
+@import 'syntax';
+//@import 'animations'; 
+
+body{
+  margin:0;
+  overflow-x:hidden;  
+}
+
+html{
+	overflow-x:hidden;      
+}

@@ -1,0 +1,16 @@
+.cf{
+	clear:both;
+	&:after{
+		content:' ';
+		display:table;
+		clear:both;
+	}
+}
+
+.right{
+	float:right;
+}
+
+.no-underline{
+	text-decoration: none;
+}
