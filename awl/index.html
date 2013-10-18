@@ -7,7 +7,7 @@ title: Home
   {% assign counter=0 %}
 	{% for post in site.posts %}
     {% if counter == 0 %}
-    <article class='push-bottom cf preview'>
+    <article class='push-bottom cf preview featured'>
       <a href='{{site.url}}{{post.url}}' class='no-underline'><h2 class='section-title'>{{post.title}}</h2></a>
       <span class='article__date'>{{ post.date | date: "%B %d, %Y" }}</span>
     {% if post.content contains "<!-- more -->" %}
@@ -20,8 +20,8 @@ title: Home
 
     {% else %}
       <article class='push-bottom cf preview abbrev'>
-        <span >{{ post.date | date: "%B %d, %Y" }}</span>
-        <a href='{{site.url}}{{post.url}}' class='no-underline title'>{{post.title}}</a>
+      <a href='{{site.url}}{{post.url}}' class='no-underline title'><h2 class='section-title'>{{post.title}}</h2></a>
+        <span class='article__date'>{{ post.date | date: "%B %d, %Y" }}</span>
     </article>
     {%endif%}
 
