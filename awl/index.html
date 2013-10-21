@@ -8,8 +8,8 @@ title: Home
 	{% for post in site.posts %}
     {% if counter == 0 %}
     <article class='push-bottom cf preview featured'>
-      <a href='{{site.url}}{{post.url}}' class='no-underline'><h2 class='section-title'>{{post.title}}</h2></a>
-      <span class='article__date'>{{ post.date | date: "%B %d, %Y" }}</span>
+      <a href='{{site.url}}{{post.url}}' class='no-underline'><h2 class='section-title'>{{post.title}}<span class='article__date'>{{ post.date | date: "%Y&middot;%m&middot;%d" }}</span>
+</h2></a>
     {% if post.content contains "<!-- more -->" %}
       {{ post.content | split:"<!-- more -->" | first % }}
       <a href="{{site.url}}{{post.url}}" class="p">Read More »</a>
@@ -20,8 +20,8 @@ title: Home
 
     {% else %}
       <article class='push-bottom cf preview abbrev'>
-      <a href='{{site.url}}{{post.url}}' class='no-underline title'><h2 class='section-title'>{{post.title}}</h2></a>
-        <span class='article__date'>{{ post.date | date: "%B %d, %Y" }}</span>
+      <a href='{{site.url}}{{post.url}}' class='no-underline title'><h2 class='section-title'>{{post.title}} <span class='article__date'>{{ post.date | date: "%Y&middot;%m&middot;%d" }}</span></h2></a>
+        
     </article>
     {%endif%}
 

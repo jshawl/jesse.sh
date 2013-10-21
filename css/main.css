@@ -20,9 +20,12 @@ body {
   margin:auto;
   padding:1em;
   text-align: center;
+  font-family:'calluna';
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family:'calluna-sans';
+  color:#AAA;
   font-size: 100%; }
 
 h2{
@@ -31,7 +34,7 @@ h2{
 }
 
 h2 {
-  font-size:1em;
+  font-size:1.5em;
 }
 
 .no-underline {
@@ -83,7 +86,7 @@ ul.posts span {
 .site {
   font-size: 115%;
   text-align: left;
-  margin: 3em auto 2em;
+  margin: 2em auto 2em;
   line-height: 1.5em;
 }
 
@@ -104,6 +107,12 @@ p {
   text-decoration: none;
 }
 
+.site .header{
+ text-align:left; 
+ border-bottom: 4px solid #eee;
+ margin-bottom:3em;
+}
+
 .site .header h1.title {
   display: inline-block;
   margin-bottom: 3em;
@@ -119,6 +128,7 @@ p {
 
 .site .header a.extra {
   color: #aaa;
+  font-family:'calluna-sans';
   margin-left: 1em;
 }
 
@@ -131,10 +141,13 @@ p {
 }
 
 .site .footer {
-  font-size: 80%;
+  font-size: 100%;
   color: #666;
+  font-family:'calluna-sans';
   border-top: 4px solid #eee;
   margin-top: 2em;
+  padding-top:1em;
+  padding-bottom:1em;
   overflow: hidden;
 }
 
@@ -215,4 +228,7 @@ article{
 
 .article__date{
   color:#aaa;
+  font-family:'calluna-sans';
+  float:right;
+  font-weight:100;
 }
