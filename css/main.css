@@ -31,7 +31,12 @@ h2{
 }
 
 h2 {
-  font-size:1em;
+  font-size:1.5em;
+  margin-bottom:1em;
+}
+
+.preview h2 {
+  margin:.25em;
 }
 
 .no-underline {
