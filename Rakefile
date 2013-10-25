@@ -1,4 +1,4 @@
-ssh_user       = "jesseshawl@jshawl.com"
+ssh_user       = "frege"
 local_site     = "_site" # typically called "_site"
 rsync_delete   = false
 
