@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width'>
+    <meta name='description' content='Jesse Shawl makes websites.'>
+    <title>Jesse Shawl</title>
+
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css" />
+  </head>
+  <body>
+    
+    <header class='site__header'>
+      <div class="wrapper cf">
+        <h1 style=''><a href="/awl/" class='logo'>Jesse Shawl</a></h1>
+        <nav class='site__nav'>
+      
+        <ul class="navigation cf">
+        
+          
+          
+            <li class="first  ">
+              
+                <a class="" href="/awl/">Home</a>
+              
+            </li>
+          
+          
+          
+            <li class="  ">
+              
+                <a class="" href="/awl/makes-things/">Projects</a>
+              
+            </li>
+          
+          
+          
+            <li class="  last">
+              
+                <a class="" href="/awl/is-all-about/">About</a>
+              
+            </li>
+          
+        </ul>
+      
+    </nav>
+    </div>
+    </header>
+  
+    <div class="site__content">
+      <div class="wrapper">
+	<article class='post'>
+		<h2>Rethinking Dynamic Page Replacing Content</h2>
+		<span class='article__date'>December 30, 2012</span>
+		<p>In May of 2012, Chris updated a previous post about <a href="http://css-tricks.com/dynamic-page-replacing-content/">dynamic page replacing content</a>. This article is an update to that update, which uses the HTML5 history API for a better user experience.</p>
+
+<p>Here's a quick recap of the best practices:</p>
+
+<ol>
+<li>Works fine with JavaScript disabled.</li>
+<li>It is possible to "deep link" to specific content.</li>
+<li>The browsers back button and forward button work as expected.</li>
+</ol>
+
+
+<h2>The problem with URL hashes</h2>
+
+<p>For one individual user, the <a href="http://css-tricks.com/examples/DynamicPage/">existing demo</a> meets the criteria just fine, but URL's are permanent addresses, and they're going to be shared.</p>
+
+<p>Consider the following scenario:</p>
+
+<ol>
+<li><p>I've got a fancy browser with Javascript enabled. I'm browsing the demo site, and I find a great product I'd like to share with a friend.</p></li>
+<li><p>I copy the url 'http://example.com/#awesome-product', and send it to my friend.</p></li>
+<li><p>My friend doesn't have javascript enabled. (S)he opens the link in her browser, and is confused that the awesome product doesn't load as expected.</p></li>
+<li><p>(S)he gets confused/frustrated and swears never to visit example.com again.</p></li>
+</ol>
+
+
+<p>THIS IS BAD UX!!</p>
+
+<p>Today, we'll be improving the existing demo such that the dynamic page replacing content needn't rely on the hash.</p>
+
+<p><a href="http://sudojesse.github.com/dynamic-page/">demo</a>
+<a href="https://github.com/sudojesse/dynamic-page/archive/master.zip">download files</a></p>
+
+<h2>Modernizr for progressive enhancement</h2>
+
+<p><em>Note: The following examples build upon the previous demo. Download the files <a href="http://css-tricks.com/examples/DynamicPage.zip">here</a> to follow along.</em></p>
+
+<p>If you're not using <a href="http://modernizr.com/">Modernizr</a> yet, go get it (I'll wait). It's the easiest way to detect browser features with javascript.</p>
+
+<p>Since we'll be playing with the HTML5 history api, we only need to check the 'History' checkbox. Download the custom build <a href="https://raw.github.com/sudojesse/dynamic-page/master/js/modernizr.js">here</a>.</p>
+
+<p>Include it in the <code>&lt;head&gt;</code> of our html file:</p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&#39;text/javascript&#39;</span> <span class="na">src=</span><span class="s">&#39;js/modernizr.js&#39;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+
+
+<p>Testing for HTML5 history support is super easy:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// dynamicpage.js</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">history</span><span class="p">){</span>
+        <span class="c1">//history is supported; do magical things</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">//history is not supported; nothing fancy here</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+<p>First, we're going to set up everything to manipulate the browser's history, and then we'll add all the fancy loading provided from the previous demo.</p>
+
+<h2>Manipulate the history with HTML5 history API</h2>
+
+<p>The HTML5 history.pushState() method  allows us to:</p>
+
+<ol>
+<li>Change the URL
+
+<ul>
+<li>without a hash</li>
+<li>without a page refresh (this is where the dynamic page replacing content happens)</li>
+</ul>
+</li>
+<li>Update the browser's history stack
+
+<ul>
+<li>so we can navigate through the history with back and forward button clicks.</li>
+</ul>
+</li>
+</ol>
+
+
+<p>The pushState() method takes three parameters:</p>
+
+<div class="highlight"><pre><code class="js"> 
+<span class="nx">history</span><span class="p">.</span><span class="nx">pushState</span><span class="p">(</span><span class="nx">stateObject</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="nx">URL</span><span class="p">);</span>
+</code></pre></div>
+
+
+<p>We're only going to be supplying the URL in this example, but you can learn more about the history API over at the <a href="https://developer.mozilla.org/en-US/docs/DOM/Manipulating_the_browser_history">Mozilla Developer Network</a>.</p>
+
+<p>After changing the URL, we'll want to set up a function to load the content - loadContent() seems like a good name.</p>
+
+<div class="highlight"><pre><code class="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">history</span><span class="p">){</span>
+        <span class="c1">//history is supported; do magical things</span>
+        
+        <span class="c1">//hijack the nav click event</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;nav&#39;</span><span class="p">).</span><span class="nx">delegate</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">_href</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">);</span>
+            
+            <span class="c1">// change the url without a page refresh and add a history entry.</span>
+            <span class="nx">history</span><span class="p">.</span><span class="nx">pushState</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">_href</span><span class="p">);</span>
+            
+            <span class="c1">// load the content</span>
+            <span class="nx">loadContent</span><span class="p">(</span><span class="nx">_href</span><span class="p">);</span> <span class="c1">// fear not! we&#39;re going to build this function in the next code block</span>
+            
+        <span class="p">});</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">//history is not supported; nothing fancy here</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+<p>And now, we just need to code up the loadContent() function, which is a matter of taking code from the original example.</p>
+
+<p>Code dump!</p>
+
+<div class="highlight"><pre><code class="js"><span class="c1">// set up some variables</span>
+<span class="kd">var</span> <span class="nx">$mainContent</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#main-content&quot;</span><span class="p">),</span>
+    <span class="nx">$pageWrap</span>    <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#page-wrap&quot;</span><span class="p">),</span>
+    <span class="nx">baseHeight</span>   <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">$el</span><span class="p">;</span>
+
+<span class="c1">// calculate wrapper heights to prevent jumping when loading new content</span>
+<span class="nx">$pageWrap</span><span class="p">.</span><span class="nx">height</span><span class="p">(</span><span class="nx">$pageWrap</span><span class="p">.</span><span class="nx">height</span><span class="p">());</span>
+<span class="nx">baseHeight</span> <span class="o">=</span> <span class="nx">$pageWrap</span><span class="p">.</span><span class="nx">height</span><span class="p">()</span> <span class="o">-</span> <span class="nx">$mainContent</span><span class="p">.</span><span class="nx">height</span><span class="p">();</span>
+
+<span class="kd">function</span> <span class="nx">loadContent</span><span class="p">(</span><span class="nx">href</span><span class="p">){</span>
+        <span class="nx">$mainContent</span>
+                <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;#guts&quot;</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">fadeOut</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// fade out the content of the current page</span>
+                    <span class="nx">$mainContent</span><span class="p">.</span><span class="nx">hide</span><span class="p">().</span><span class="nx">load</span><span class="p">(</span><span class="nx">href</span> <span class="o">+</span> <span class="s2">&quot; #guts&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// load the contents of whatever href is</span>
+                        <span class="nx">$mainContent</span><span class="p">.</span><span class="nx">fadeIn</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                            <span class="nx">$pageWrap</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span>
+                                <span class="nx">height</span><span class="o">:</span> <span class="nx">baseHeight</span> <span class="o">+</span> <span class="nx">$mainContent</span><span class="p">.</span><span class="nx">height</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;px&quot;</span>
+                            <span class="p">});</span>
+                        <span class="p">});</span>
+                        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;nav a&quot;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;current&quot;</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">href</span><span class="p">);</span>
+                        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;nav a[href$=&quot;</span><span class="o">+</span><span class="nx">href</span><span class="o">+</span><span class="s2">&quot;]&quot;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;current&quot;</span><span class="p">);</span>
+                    <span class="p">});</span>
+                <span class="p">});</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+
+<h2>Handle browser back and forward button clicks</h2>
+
+<p>At this point, content is loaded in a fancy ajaxy way, but clicking on your back button won't take us back... yet.
+The history API gives us access to the 'popstate' event, which fires everytime the history stack changes (read: back and/or forward buttons are clicked.) Anytime this event fires, we just need to call our loadContent() function:</p>
+
+<div class="highlight"><pre><code class="js"><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;popstate&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>   
+    <span class="nx">_link</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^.*[\\\/]/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="c1">//get filename only</span>
+    <span class="nx">loadContent</span><span class="p">(</span><span class="nx">_link</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+<h2>A little homework assignment</h2>
+
+<p>At the time of this writing, the popstate event happens on page load in Chrome. This means two requests are being made:</p>
+
+<ol>
+<li>The original http request for whateverpage.html</li>
+<li>The request made by $.load in our loadContent() function</li>
+</ol>
+
+
+<p>There are a couple of different ways to handle this, but I'll let you decide which works best.</p>
+
+	</article>
+	    </div>
+    </div>
+    <div class="site__footer">
+      
+      <div class="icons">
+        <a href="http://codepen.io/jshawl"><i>c</i></a>
+        <a href="http://github.com/jshawl"><i class='icon-github'></i></a>
+        <a href="http://twitter.com/jshawl"><i class='icon-twitter'></i></a>
+        <a href="mailto:jesse@jshawl.com"><i class='icon-envelope-alt'></i></a>
+        <div style='display:block;font-size:.45em;margin-top:1em'>
+        <span style='line-height:.45em;'>&copy;</span> Jesse Shawl
+        </div>
+      </div>
+
+    </div>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43267136-1', 'jesse.sh');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

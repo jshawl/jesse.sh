@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width'>
+    <meta name='description' content='Jesse Shawl makes websites.'>
+    <title>Jesse Shawl</title>
+
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css" />
+  </head>
+  <body>
+    
+    <header class='site__header'>
+      <div class="wrapper cf">
+        <h1 style=''><a href="/awl/" class='logo'>Jesse Shawl</a></h1>
+        <nav class='site__nav'>
+      
+        <ul class="navigation cf">
+        
+          
+          
+            <li class="first  ">
+              
+                <a class="" href="/awl/">Home</a>
+              
+            </li>
+          
+          
+          
+            <li class="  ">
+              
+                <a class="" href="/awl/makes-things/">Projects</a>
+              
+            </li>
+          
+          
+          
+            <li class="  last">
+              
+                <a class="" href="/awl/is-all-about/">About</a>
+              
+            </li>
+          
+        </ul>
+      
+    </nav>
+    </div>
+    </header>
+  
+    <div class="site__content">
+      <div class="wrapper">
+	<article class='post'>
+		<h2>Dealing with Rate Limited APIs</h2>
+		<span class='article__date'>April 16, 2013</span>
+		<p>tl;dr: Access the API once an hour with a cron job, and let your $.getJSON make a call to the cached response.</p>
+
+<p>I recently set up a <a href="/apis/#github">little something</a> to pull in all of the repos that I've starred on Github. With a simple JSON call, I can pull that data in no problem.</p>
+
+<p>Unfortunately (well, this is actually a good thing), Github <a href="http://developer.github.com/v3/#rate-limiting">limits</a> unauthenticated API access to 60 requests per hour. Sure, I could use an OAuth access token to query their API up to 5,000 times per hour, but this requires a little PHP/Backend-fu to set up.</p>
+
+<p>Before, any time someone visited my /apis/ page, the JSON call would make the request to Github's API. <a href="https://github.com/jshawl/jshawl-v3/blob/0d0ac608c215bacab8f766caf7cd88d6f6c5564c/templates/partials/github.html#L3">see the code</a></p>
+
+<p>What I want to do instead is setup a CRON job to get that JSON once per hour, save it as some file (github-data.json maybe?), and then make our JSON call reference the cached response. NOTE: I'm choosing once per hour, but you can make the call as often as you like (under 60 times per hour). That way, we'll never have to worry about exceeding our rate limit for unauthenticated API access.</p>
+
+<p>First, let's write a shell script to grab that data and write it to a file:
+<span data-lang='sh'></span></p>
+
+<pre><code>#!/bin/sh
+
+# grab the JSON from the github API and save it to a file named github.json
+    curl https://api.github.com/users/jshawl/starred?type=public &gt; /var/www/jshawl.com/github.json
+    #oh snap! a one liner!
+</code></pre>
+
+<p>I named this file 'get-github-json.sh'. Since we're running this script from a CRON job, we should use absolute paths. Who knows where that file could end up!</p>
+
+<p>Now we make it executable
+<span data-lang='sh'></span></p>
+
+<pre><code>$ chmod +x ./get-github-json.sh
+</code></pre>
+
+<p>Test it out!
+<span data-lang='sh'></span></p>
+
+<pre><code>$ ./get-github-json.sh
+</code></pre>
+
+<p>If it worked, you should see a new file called github.json. Cool! so the shell script is working. Now we just need to setup a cron job to run that script once per hour, every hour, every day, every month, every year.</p>
+
+<pre><code>$ sudo crontab -e #you might not need sudo depending on your webserver's directory permissions.
+</code></pre>
+
+<p>I chose to use Vim as my crontab editor. Just add our crontab entry.</p>
+
+<p>ProTip! Need help adding a new crontab? Check out this tool: <a href="http://www.generateit.net/cron-job/index.php">http://www.generateit.net/cron-job/index.php</a>
+<span data-lang='sh'></span></p>
+
+<pre><code># execute /var/www/jshawl.com/get-github-json.sh once per hour
+# every day, every month, every year
+0 * * * * /var/www/jshawl.com/get-github-json.sh
+</code></pre>
+
+<p>This is really cool. Our /get-github-json.sh will access the Github API once per hour. The last thing we need to do is change our $.getJSON call to reference the cached copy anytime your webpage loads.
+<span data-lang='lang-js'></span></p>
+
+<pre><code>$.getJSON('/github.json', function (result) {
+        // do magical things with our result object.
+}
+</code></pre>
+
+<p>Here's what I did with it: <a href="https://github.com/jshawl/jshawl-v3/blob/master/templates/partials/github.html#L3">https://github.com/jshawl/jshawl-v3/blob/master/templates/partials/github.html#L3</a></p>
+
+<p>In the event that more than 60 people look at my /apis/ page within one hour, I won't get a "Rate Limit Exceeded" error from Github.</p>
+
+<p>Awesome.</p>
+
+	</article>
+	    </div>
+    </div>
+    <div class="site__footer">
+      
+      <div class="icons">
+        <a href="http://codepen.io/jshawl"><i>c</i></a>
+        <a href="http://github.com/jshawl"><i class='icon-github'></i></a>
+        <a href="http://twitter.com/jshawl"><i class='icon-twitter'></i></a>
+        <a href="mailto:jesse@jshawl.com"><i class='icon-envelope-alt'></i></a>
+        <div style='display:block;font-size:.45em;margin-top:1em'>
+        <span style='line-height:.45em;'>&copy;</span> Jesse Shawl
+        </div>
+      </div>
+
+    </div>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43267136-1', 'jesse.sh');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
