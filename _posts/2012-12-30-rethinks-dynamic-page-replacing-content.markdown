@@ -12,7 +12,7 @@ Here's a quick recap of the best practices:
 2. It is possible to "deep link" to specific content. 
 3. The browsers back button and forward button work as expected.
 
-## The problem with URL hashes
+### The problem with URL hashes
 
 For one individual user, the [existing demo](http://css-tricks.com/examples/DynamicPage/) meets the criteria just fine, but URL's are permanent addresses, and they're going to be shared. 
 
@@ -33,7 +33,7 @@ Today, we'll be improving the existing demo such that the dynamic page replacing
 [demo](http://sudojesse.github.com/dynamic-page/)
 [download files](https://github.com/sudojesse/dynamic-page/archive/master.zip)
 
-## Modernizr for progressive enhancement
+### Modernizr for progressive enhancement
 
 *Note: The following examples build upon the previous demo. Download the files [here](http://css-tricks.com/examples/DynamicPage.zip) to follow along.*
 
@@ -62,7 +62,7 @@ $(function(){
 
 First, we're going to set up everything to manipulate the browser's history, and then we'll add all the fancy loading provided from the previous demo.
 
-## Manipulate the history with HTML5 history API
+### Manipulate the history with HTML5 history API
 
 The HTML5 history.pushState() method  allows us to: 
 
@@ -136,7 +136,7 @@ function loadContent(href){
     }
 {% endhighlight %} 
 
-## Handle browser back and forward button clicks
+### Handle browser back and forward button clicks
 
 At this point, content is loaded in a fancy ajaxy way, but clicking on your back button won't take us back... yet.
 The history API gives us access to the 'popstate' event, which fires everytime the history stack changes (read: back and/or forward buttons are clicked.) Anytime this event fires, we just need to call our loadContent() function:
@@ -148,7 +148,7 @@ $(window).bind('popstate', function(){
 });
 {% endhighlight %}
 
-## A little homework assignment
+### A little homework assignment
 
 At the time of this writing, the popstate event happens on page load in Chrome. This means two requests are being made:
 

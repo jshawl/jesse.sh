@@ -17,10 +17,11 @@ section{
 	border-radius:100%;
 	display:block;
 	margin:auto;
-	margin-bottom:3em;
+	margin-bottom:2em;
 	@media all and (min-width: 35em){
 		margin-right:1em;
 		float:left;
+		margin-bottom:12em;
 	}
 }
 

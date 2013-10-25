@@ -63,7 +63,7 @@
 </ol>
 
 
-<h2>The problem with URL hashes</h2>
+<h3>The problem with URL hashes</h3>
 
 <p>For one individual user, the <a href="http://css-tricks.com/examples/DynamicPage/">existing demo</a> meets the criteria just fine, but URL's are permanent addresses, and they're going to be shared.</p>
 
@@ -84,7 +84,7 @@
 <p><a href="http://sudojesse.github.com/dynamic-page/">demo</a>
 <a href="https://github.com/sudojesse/dynamic-page/archive/master.zip">download files</a></p>
 
-<h2>Modernizr for progressive enhancement</h2>
+<h3>Modernizr for progressive enhancement</h3>
 
 <p><em>Note: The following examples build upon the previous demo. Download the files <a href="http://css-tricks.com/examples/DynamicPage.zip">here</a> to follow along.</em></p>
 
@@ -114,7 +114,7 @@
 
 <p>First, we're going to set up everything to manipulate the browser's history, and then we'll add all the fancy loading provided from the previous demo.</p>
 
-<h2>Manipulate the history with HTML5 history API</h2>
+<h3>Manipulate the history with HTML5 history API</h3>
 
 <p>The HTML5 history.pushState() method  allows us to:</p>
 
@@ -201,7 +201,7 @@
 </code></pre></div>
 
 
-<h2>Handle browser back and forward button clicks</h2>
+<h3>Handle browser back and forward button clicks</h3>
 
 <p>At this point, content is loaded in a fancy ajaxy way, but clicking on your back button won't take us back... yet.
 The history API gives us access to the 'popstate' event, which fires everytime the history stack changes (read: back and/or forward buttons are clicked.) Anytime this event fires, we just need to call our loadContent() function:</p>
@@ -213,7 +213,7 @@ The history API gives us access to the 'popstate' event, which fires everytime t
 </code></pre></div>
 
 
-<h2>A little homework assignment</h2>
+<h3>A little homework assignment</h3>
 
 <p>At the time of this writing, the popstate event happens on page load in Chrome. This means two requests are being made:</p>
 
