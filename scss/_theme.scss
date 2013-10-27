@@ -1,18 +1,19 @@
-$black: #272822;
-html{
-	background:$black;
-}
+$black: #272727;
 body{
 	color:#272822;
 	position:relative;  
 	background:#fff;  
 }
 a{
-	color:#1CA7DB;      
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px dotted #272727;
 }
 
 .site__header{
 //border-bottom: 1px solid #eee; 
+background:#272727;
+
 }
 
 .abbrev{
@@ -31,8 +32,6 @@ h1 a, .site__nav a {
 	text-decoration: none;
 }
 
-.site__header,
-.site__nav,
 .site__footer{
 	background:#fff;
 	color:#B3B3B3;
@@ -107,9 +106,11 @@ h1 a, .site__nav a {
 }
 
 .icons{
-	background:#272822;
+	background:#fff;
+      color:$black;  
 	a{
-		color:inherit;
+		color:$black;
+		border-bottom:0px solid #ddd;
 		text-decoration: none;
 		&:hover{
 			color:#AD85FC;
