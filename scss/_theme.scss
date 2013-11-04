@@ -85,37 +85,6 @@ h1 a, .site__nav a {
 	}
 }
 
-.site__feature--hire{
-	background:url(/img/about.jpg);
-    background-size: 100%;
-    background-position: 30% 15%;
-}
-
-.site__feature--home{
-	background:url(/img/desk.jpg);
-    background-size: 190%;
-    background-position: 50% 63%;
-    @media all and (min-width: 35em){
-    	background-size: 100%;
-    	background-position: 50% 63%;  
-    }
-}
-
-.site__feature--home.post{  
-	padding:1em 0 !important;  
-}
-
-.site__feature--projects{
-	background:url(/img/hire.jpg);
-    background-size: 113%;
-    background-position: 50% 31%;
-}
-
-.site__feature--img{
-	background-position:50% 50%; 
-	background-size:150%;   
-	background-image:url(/img/computer.jpg);
-}
 
 .icons{
 	background:#fff;
