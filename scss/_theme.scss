@@ -67,9 +67,21 @@ h1 a, .site__nav a {
 	a{
 		transition: all .2s ease;
 		&:hover, &.current{
-			color:darken(#B3B3B3, 35%);
-			
+		color:#fff;	
 		}
+		&.current:after{
+	         content:'';
+		 display:block;
+		 height:20px;
+		 width:20px;
+		 position:absolute;
+		 background:#fff;
+		 bottom:0;
+		 left:50%;
+		 margin-left:-5px;
+		 transform:rotate(-45deg);
+		 transform-origin:100% 100%;
+	        }
 	}
 }
 
