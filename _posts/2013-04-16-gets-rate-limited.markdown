@@ -5,7 +5,7 @@ title:  "Dealing with Rate Limited APIs"
 ---
 tl;dr: Access the API once an hour with a cron job, and let your $.getJSON make a call to the cached response.
 
-I recently set up a [little something](/apis/#github) to pull in all of the repos that I've starred on Github. With a simple JSON call, I can pull that data in no problem. 
+I recently set up a little something to pull in all of the repos that I've starred on Github. With a simple JSON call, I can pull that data in no problem. 
 
 Unfortunately (well, this is actually a good thing), Github [limits](http://developer.github.com/v3/#rate-limiting) unauthenticated API access to 60 requests per hour. Sure, I could use an OAuth access token to query their API up to 5,000 times per hour, but this requires a little PHP/Backend-fu to set up.
 
