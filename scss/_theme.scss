@@ -89,12 +89,13 @@ h1 a, .site__nav a {
 .icons{
 	background:#fff;
       color:$black;  
+      color:#ddd;
 	a{
-		color:$black;
+		color:#ddd;
 		border-bottom:0px solid #ddd;
 		text-decoration: none;
 		&:hover{
-			color:#AD85FC;
+			color:$black;
 		}
 	}
 }

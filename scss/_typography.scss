@@ -39,8 +39,14 @@ h1,h2, h3, h4,
 	font-weight:300; 
 }
 
-.title + span{
-	padding-left:1em;
+.title{
+	margin-right:.5em;
+	@media all and (max-width:35em){
+	  margin-right:0;
+          & + span {
+	    display:block;
+         }
+        }
 }
 
 h2{
