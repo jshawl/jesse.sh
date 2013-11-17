@@ -6,7 +6,7 @@ title: "Vanity URLs"
 <p data-height="300" data-theme-id="790" data-slug-hash="rGdme" data-user="jshawl" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/jshawl/pen/rGdme'>rGdme</a> by Jesse Shawl (<a href='http://codepen.io/jshawl'>@jshawl</a>) on <a href='http://codepen.io'>CodePen</a></p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-This is a post about how I fine tuned my URL. My main domain name is jshawl.com. It's easy to pronounce and it's rememberable. It's ideal for telling people how they can find out more about me. 
+This is a post about how I fine tuned my URL.<!-- more --> My main domain name is jshawl.com. It's easy to pronounce and it's rememberable. It's ideal for telling people how they can find out more about me. 
 
 Every request that goes to http://jshawl.com/  or http://(\*).jshawl.com/, where the (*) indicates any subdomain of jshawl.com, will be automatically redirected to http://jesse.sh/awl/
 
