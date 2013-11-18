@@ -164,13 +164,32 @@ pre{
 .highlight .vg { color: #f8f8f2 } /* Name.Variable.Global */
 .highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+.highlight{ .o{ color:#fff; } .nt{ color:#75715e; } } 
 
-.highlight{
-	.o{
-		color:#fff;
-	}
-	.nt{
-		color:#75715e;
-	}
+
+
+
+
+.highlight, code, pre{
+  border-radius:3px;
 }
 
+pre, code,
+pre code{
+  background:#272822;
+  color:#F8F8F2;
+  border:none;
+}
+.highlight pre{
+  padding:0;
+}
+pre{
+  padding:1em;
+}
+code {
+  padding:0 .25em;
+  margin: 0 2px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  color:#333333;
+}
