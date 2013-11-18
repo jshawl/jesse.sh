@@ -1,4 +1,4 @@
-debug = :true
+debug = :false
 css_dir = "css"
 sass_dir = "scss"
 

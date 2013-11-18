@@ -1,7 +1,8 @@
 .site__header a {
-  color:#B3B3B3;
   transition:all .2s ease;
+  color:#666;
+  border:none;
   &:hover{
-    color:#fff;
+    color:#000;
   }
 }
