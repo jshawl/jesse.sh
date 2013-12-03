@@ -4,10 +4,21 @@ body{
 	position:relative;  
 	background:#fff;  
 }
+.preview.abbrev a {
+  color:#272822;
+}
+
+  .p {
+
+  color:#272822;
+  }
+
 a{
-  color:inherit;
+  color:#ED1E79;
   text-decoration:none;
-  border-bottom:1px dotted #272727;
+  &:hover{
+    text-decoration:underline;
+  }
 }
 
 .site__header{
@@ -30,6 +41,9 @@ a h2{
 
 h1 a, .site__nav a {
 	text-decoration: none;
+	&:hover{
+      text-decoration:underline;  
+    }
 }
 
 .site__footer{
@@ -86,4 +100,10 @@ h1 a, .site__nav a {
 			color:$black;
 		}
 	}
+}
+
+.no-underline{
+  &, &:hover{
+    text-decoration:none;
+  }
 }
