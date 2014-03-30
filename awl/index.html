@@ -5,27 +5,27 @@ title: Home
 
 <div class="wrapper">
   {% assign counter=0 %}
-	{% for post in site.posts %}
-    {% if counter == 0 %}
-    <article class='push-bottom cf preview'>
-      <a href='{{site.url}}{{post.url}}' class='no-underline'><h2 class='section-title'>{{post.title}}</h2></a>
-      <span class='article__date'>{{ post.date | date: "%B %d, %Y" }}</span>
-    {% if post.content contains "<!-- more -->" %}
-      {{ post.content | split:"<!-- more -->" | first % }}
-      <a href="{{site.url}}{{post.url}}" class="p">Read More »</a>
-    {% else %}
-      {{ post.content }}
+  {% for post in site.posts %}
+    {% if post.type != "page" %}
+      {% if counter == 0 %}
+	<article class='push-bottom cf preview'>
+	  <a href='{{site.url}}{{post.url}}' class='no-underline'><h2 class='section-title'>{{post.title}}</h2></a>
+	  <span class='article__date'>{{ post.date | date: "%B %d, %Y" }}</span>
+	  {% if post.content contains "<!-- more -->" %}
+	    {{ post.content | split:"<!-- more -->" | first % }}
+	    <a href="{{site.url}}{{post.url}}" class="p">Read More »</a>
+	  {% else %}
+	    {{ post.content }}
+	  {% endif %}
+	</article>
+      {% else %}
+	<article class='push-bottom cf preview abbrev'>
+	  <a href='{{site.url}}{{post.url}}' class='no-underline title'>{{post.title}}</a>
+	  <span class='article__date'>{{ post.date | date: "%B %d, %Y" }}</span>
+	</article>
+      {%endif%}
     {% endif %}
-    </article>
-
-    {% else %}
-      <article class='push-bottom cf preview abbrev'>
-        <a href='{{site.url}}{{post.url}}' class='no-underline title'>{{post.title}}</a>
-        <span class='article__date'>{{ post.date | date: "%B %d, %Y" }}</span>
-    </article>
-    {%endif%}
-
-	  
-  {% assign counter=counter | plus:1 %}   
+    {% assign counter=counter | plus:1 %}   
   {% endfor %}
 </div>
+

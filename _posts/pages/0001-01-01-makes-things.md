@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Projects
+type: page
 ---
 
 <div class="wrapper">

@@ -6,8 +6,8 @@ navigation:
 - text: Home
   url: /awl/index.html
 - text: Projects
-  url: /awl/makes-things/index.html
+  url: /awl/makes-things/
 - text: Teaching
-  url: /awl/teaches/index.html
+  url: /awl/teaches/
 - text: About
-  url: /awl/is-all-about/index.html
+  url: /awl/is-all-about/
