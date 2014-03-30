@@ -11,6 +11,9 @@
   .site__header a{
     font-size:.9em;
   }
+  .site__nav li:before{
+    display:none;
+  }
   .site__header h1{
     text-align:left;
     padding-left:.5em;

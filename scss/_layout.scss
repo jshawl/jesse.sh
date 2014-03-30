@@ -75,7 +75,7 @@ article{
 
 
 
-@media all and (max-width:25em){
+@media all and (max-width:30em){
 	.site__nav,
 	.site__header{
 		float:none;
@@ -83,13 +83,14 @@ article{
 		padding-top:0 !important;
 	}
 	.site__nav{
+                border-top:1px solid #eee;
+                border-bottom:1px solid #eee;
 		li{
-			float:none !important;  
 			position:relative;
 		}
 		li a{
-			padding:1.25em 1em;
-			padding:0em .5em 1.125em .5em;
+			padding:1.25em .5em;
+                        font-size:.75em;
 		}
 	}
 }
