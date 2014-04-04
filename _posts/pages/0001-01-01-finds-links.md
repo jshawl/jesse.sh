@@ -8,7 +8,7 @@ type: page
 <h1>Links</h1>
 <p>Here's a collection of what I've been enjoying on Pocket lately.</p>
 <div class='pocket-watch'></div>
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"> </script>
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"> </script>
 <script type="text/javascript" src="/js/pocketwatch.min.js"> </script>
   <script type='text/javascript'>
   $('.pocket-watch').pocketWatch({
