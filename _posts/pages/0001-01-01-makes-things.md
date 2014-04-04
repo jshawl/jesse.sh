@@ -8,7 +8,7 @@ type: page
 
 <article class='push-bottom cf'>
   <h2 class='article-title'>Precess</h2>
-  <a href='http://precess.co/'><img src='http://jshawl.com/Screen-Shot-2014-03-29-at-7.08.48-PM-2.png' style='max-width:100%;'></a>
+  <a href='http://precess.co/'><img src='/img/precess.png' style='max-width:100%;'></a>
   <p>I wanted to enhance my Ruby skills by making a Sinatra app, so I built my own real-time Sass (and Less) compiler after listening
   to the server architecture talk on the <a href='http://blog.codepen.io/radio/'>Codepen radio</a>.</p>
   <p> The application sits behind an Nginx reverse proxy to the Unicorn server. In order to compile Less, requests are made to an express app listening for compile requests. 
