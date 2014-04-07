@@ -16,11 +16,11 @@ type: page
 	<p>Or start compiling over at <a href='http://precess.co/'>http://precess.co/</a>.</p>
     </article>
     <article>
-	<h2 class='article-title'>Pocket Zero</h2>
-	<a href="http://jesse.sh/awl/made/pocket-zero/">
-	    <img src="/img/pocket-zero.png" alt="Pocket Zero">
+	<h2 class='article-title'>Unqueue</h2>
+	<a href="http://jshawl.com/unqueue/">
+	    <img src="/img/unqueue.png" alt="Unqueue">
 	</a>
-	<p>My <a href='http://getpocket.com'>Pocket</a> runneth over, and I needed a one click solution to mark all of the items in my queue as read. There wasn't one, so I rolled my own with the Pocket API. <a href="http://jesse.sh/awl/made/pocket-zero/">Check it out!</a></p>
+	<p>My <a href='http://getpocket.com'>Pocket</a> runneth over, and I needed a one click solution to mark all of the items in my queue as read. There wasn't one, so I rolled my own with the Pocket API. <a href="http://jshawl.com/unqueue/">Check it out!</a></p>
     </article>
 
     <article>
