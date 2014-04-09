@@ -1,104 +1,104 @@
 $black: #272727;
+$red: #E84D5B;
+
 body{
-	color:#272822;
-	position:relative;  
-	background:#fff;  
-}
-.preview.abbrev a {
-  color:#272822;
+    color:$black;
+    position:relative;  
+    background:#fff;  
 }
 
-  .p {
+.preview.abbrev a{
+    color:$black;
+}
 
-  color:#272822;
-  }
+.p{
+    color:$black;
+}
 
 a{
-  color:#E84D5B;
-  text-decoration:none;
-  &:hover{
-    text-decoration:underline;
-  }
+    color:$red;
+    text-decoration:none;
+    &:hover{
+	text-decoration:underline;
+    }
 }
 
 .abbrev{
-  border-bottom:1px solid #eee; 
-  margin:0;
-  padding:1em 0;    
+    border-bottom:1px solid #eee; 
+    margin:0;
+    padding:1em 0;    
 }
 
 h1 a,
 h2 a,  
 a h2{
-	color:#272822;   
+    color:#272822;   
 }
 
-h1 a, .site__nav a {
-	text-decoration: none;
-	&:hover{
-      text-decoration:underline;  
+h1 a, .site__nav a{
+    text-decoration: none;
+    &:hover{
+	text-decoration:underline;  
     }
 }
 
 .site__footer{
-	background:#fff;
-	color:#B3B3B3;
+    background:#fff;
+    color:#B3B3B3;
 }
 
 .article__date,
 .site__nav a{
-	color:#B3B3B3;
+    color:#B3B3B3;
 }
 
 .site__nav{	
-	li{
-		transition:all .2s ease;
-		position:relative;
-		overflow:hidden;
-		&:before{
-			content:'';
-			display:block;
-			position:absolute;
-			width:100%;
-			height:.5em; 
-			z-index:10;
-			background:$black;
-			top:-.5em;
-			transition:all .2s ease;
-			@media all and (max-width:25em){
-				background:none;
-			}
-		}
+    li{
+	transition:all .2s ease;
+	position:relative;
+	overflow:hidden;
+	&:before{
+	    content:'';
+	    display:block;
+	    position:absolute;
+	    width:100%;
+	    height:.5em; 
+	    z-index:10;
+	    background:$black;
+	    top:-.5em;
+	    transition:all .2s ease;
+	    @media all and (max-width:25em){
+		background:none;
+	    }
 	}
-	li.current:before{
-		top:0;  
+    }
+    li.current:before{
+	top:0;  
+    }
+    a{
+	transition: all .2s ease;
+	border:none;
+	&:hover, &.current{
+	    color:#000;	
 	}
-	a{
-		transition: all .2s ease;
-		border:none;
-		&:hover, &.current{
-		  color:#000;	
-		}
-	}
+    }
 }
 
-
 .icons{
-	background:#fff;
-      color:$black;  
-      color:#ddd;
-	a{
-		color:#ddd;
-		border-bottom:0px solid #ddd;
-		text-decoration: none;
-		&:hover{
-			color:$black;
-		}
+    background:#fff;
+    color:#ddd;
+    a{
+	color:#ddd;
+	border-bottom:0px solid #ddd;
+	text-decoration: none;
+	&:hover{
+	    color:$black;
 	}
+    }
 }
 
 .no-underline{
-  &, &:hover{
-    text-decoration:none;
-  }
+    &, &:hover{
+	text-decoration:none;
+    }
 }
