@@ -4,7 +4,7 @@ title: "Making 3D Buttons with Sass"
 ---
 
 <p data-height="244" data-theme-id="790" data-slug-hash="bcjyH" data-user="jshawl" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/jshawl/pen/bcjyH'>bcjyH</a> by Jesse Shawl (<a href='http://codepen.io/jshawl'>@jshawl</a>) on <a href='http://codepen.io'>CodePen</a></p>
-<script async src="http://codepen.io/assets/embed/ei.js"></script>
+<script async src="https://codepen.io/assets/embed/ei.js"></script>
 
 I'm a huge fan of the button styles on [CSS Tricks](http://css-tricks.com/), and wanted to create my own. 
 
