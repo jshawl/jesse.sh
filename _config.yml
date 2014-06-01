@@ -1,15 +1,11 @@
-name: Jesse Shawl
-pygments: true
-permalink: /awl/:title/
-markdown: rdiscount
-navigation:
-- text: Home
-  url: /awl/index.html
-- text: Projects
-  url: /awl/makes-things/
-- text: Links
-  url: /awl/finds-links/
-- text: Teaching
-  url: /awl/teaches/
-- text: About
-  url: /awl/is-all-about/
+# Site settings
+title: Jesse Shawl
+email: jesse@jshawl.com
+username: jshawl
+description: "Jesse Shawl makes websites."
+baseurl: ""
+url: "http://jesse.sh/"
+
+# Build settings
+markdown: kramdown
+permalink: /:title/
