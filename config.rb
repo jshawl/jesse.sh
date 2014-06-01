@@ -1,4 +1,4 @@
-debug = :false
+debug = :true
 css_dir = "css"
 sass_dir = "scss"
 
@@ -9,10 +9,9 @@ on_stylesheet_saved do |file|
   css = File.read(file)
   File.open(file,'w') do |io|
     if debug == :true
-      io << AutoprefixerRails.compile(css)
+      io << AutoprefixerRails.process(css)
     else
-      io << Csso.optimize(AutoprefixerRails.compile(css))
+      io << Csso.optimize(AutoprefixerRails.process(css))
     end
   end
 end
-
