@@ -3,7 +3,7 @@ title: Jesse Shawl
 email: jesse@jshawl.com
 username: jshawl
 description: "Jesse Shawl makes websites."
-baseurl: "awl"
+baseurl: "/awl"
 url: ""
 
 # Build settings
