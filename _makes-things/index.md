@@ -32,10 +32,4 @@ type: page
 	<p>I wanted to recreate the in-app exploratory experience of visualizing a collection of photos.</p>
     </article>
 
-    <article>
-	<h2>Jagged Border Generator</h2> 
-	Jagged borders make your designs sharp! :) Why not make a <em>cutting</em> edge design with my Jagged Border Generator?</p>
-	<pre class="codepen" data-height="500" data-type="result" data-href="JcpKg" data-user="jshawl" data-safe="true"><code></code><a href="http://codepen.io/jshawl/pen/JcpKg">Check out this Pen!</a></pre>
-	<script async src="https://codepen.io/assets/embed/ei.js"></script>
-    </article>
 </div><!-- wrapper -->
