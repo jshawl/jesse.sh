@@ -22,10 +22,12 @@ The second two are mappings for indenting while in visual mode. The `gv` reselec
 
 By default, Vim will exit visual mode after an indenting operation occurs. This is silly. I'd rather be able to indent as much as I like while in Visual mode, and then `esc` when I'm done formatting.
 
-<iframe src='http://showterm.io/b28d791a106c799a5bce2' width='100%' height='500px'></iframe>
+<img src='/img/indenting.gif' style='max-width:100%;'>
+
+<br style='clear:both;'>
 
 ### Update
 
 If you're working with a single file type, say HTML or CSS, you can type `gg=G` to auto indent the entire file. Unfortunately, I do a lot of work with inline PHP (er.. WordPress), and auto indenting the entire file will either screw up your PHP or your HTML, depending on what you've set your filetype to with `:set filetype=`. 
 
-Until there's a better way to auto format a file with more than one language inside, I've found the easiest way to keep my code clean is with the remappings above. Do you know of a better way? Let me know! Thanks to [@_mrmrs](https://twitter.com/mrmrs_) for the auto indenting file tip!
+Until there's a better way to auto format a file with more than one language inside, I've found the easiest way to keep my code clean is with the remappings above. Do you know of a better way? Let me know! Thanks to <a href="https://twitter.com/mrmrs_">@mrmrs_</a> for the auto indenting file tip!
