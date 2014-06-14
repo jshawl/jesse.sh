@@ -8,6 +8,34 @@
 
 html, body { height: 100%; }
 
+img {
+  max-width:100%;
+}
+
+p{
+  margin:1em 0;
+}
+
+p:first-of-type{
+  margin-top:0;
+}
+
+h2{
+  margin:1em 0;
+  font-size:1.25em;
+}
+
+article{
+  margin-bottom:2em;
+  clear:both;
+}
+
+article img{
+  float:left;
+  max-width:200px;
+  padding:0 2em 2em 0;
+}
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -234,6 +262,7 @@ a:visited { color: #205caa; }
   -moz-border-radius: 3px;
   border-radius: 3px;
   font-size: 15px;
+  overflow:scroll;
 }
 
 .post code { padding: 1px 5px; }
