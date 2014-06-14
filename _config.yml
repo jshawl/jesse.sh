@@ -9,3 +9,11 @@ url: "http://jesse.sh/"
 # Build settings
 markdown: kramdown
 permalink: /:title/
+
+collections:
+  teaches:
+    output: true
+  is-all-about:
+    output: true
+  makes-things:
+    output: true
