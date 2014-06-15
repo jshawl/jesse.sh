@@ -1,3 +1,6 @@
+---
+---
+
 /* Base */
 /* ----------------------------------------------------------*/
 
@@ -6,7 +9,10 @@
   padding: 0;
 }
 
-html, body { height: 100%; }
+html, body { height: 100%;
+  background:#000;
+  color:#bbb;
+}
 
 img {
   max-width:100%;
@@ -41,15 +47,39 @@ body {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
-  background-color: #fdfdfd;
 }
 
-h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; color:#fff;}
 
-a         { color: #2a7ae2; text-decoration: none; }
-a:hover   { color: #000; text-decoration: underline; }
-a:visited { color: #205caa; }
+a         { color: lightGreen; text-decoration: none; }
+a:hover   { color: #fff; text-decoration: underline; }
+a:visited { color: #FF34B3; }
 
+$xy:6px;
+$logo-color: #fff;
+
+.logo{
+  width:5 * $xy;
+  margin-top:$xy;
+  height:7 * $xy;
+  display:block;
+  position:relative;
+  &:after{
+    content:'';
+    display:block;
+    position:absolute;
+    left:0;
+    top:0;
+    height:$xy;
+    width:$xy;
+    box-shadow: 2 * $xy $xy 0 $logo-color
+              , 2 * $xy 3 * $xy 0 $logo-color
+              , 2 * $xy 4 * $xy 0 $logo-color
+              , 2 * $xy 5 * $xy 0 $logo-color
+              , 1 * $xy 5 * $xy 0 $logo-color
+              , 3 * $xy 3 * $xy 0 $logo-color;
+  }
+}
 /* Utility */
 
 .wrap:before,
@@ -69,10 +99,15 @@ a:visited { color: #205caa; }
 /* Site header */
 
 .site-header {
-  border-top: 5px solid #333;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #666;
   min-height: 56px;
-  background-color: white;
+}
+
+.site-title svg{
+  fill: #fff;
+  width:20px;
+  display:block;
+  height:55px;
 }
 
 .site-title,
@@ -97,8 +132,9 @@ a:visited { color: #205caa; }
 
 .site-nav .page-link {
   margin-left: 20px;
-  color: #727272;
+  color: #fff;
   letter-spacing: -.5px;
+
 }
 
 /* Site footer */
@@ -165,7 +201,6 @@ a:visited { color: #205caa; }
 
 .page-content {
   padding: 30px 0;
-  background-color: #fff;
 }
 
 
@@ -263,6 +298,7 @@ a:visited { color: #205caa; }
   border-radius: 3px;
   font-size: 15px;
   overflow:scroll;
+  color:#000;
 }
 
 .post code { padding: 1px 5px; }
@@ -415,6 +451,7 @@ a:visited { color: #205caa; }
     line-height: 1.25;
     padding: 5px 10px;
     margin: 0;
+    color:#000;
   }
 
   .post-header h1 { font-size: 36px; }
