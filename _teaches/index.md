@@ -4,7 +4,7 @@ title: Teaching
 type: page
 ---
 
-<div class="wrapper">
+<div class="wrapper teaching">
   <article class='push-bottom cf'>
     <h2 class='article-title'>Front End Web Development</h2>
     <img class='project__img' src='/img/ga-fewd.png' alt='FEWD Logo'>

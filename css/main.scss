@@ -36,11 +36,14 @@ article{
   clear:both;
 }
 
-article img{
+.projects img,
+.about img,
+.teaching img{
   float:left;
   max-width:200px;
   padding:0 2em 2em 0;
 }
+
 
 body {
   font-family: Helvetica, Arial, sans-serif;
@@ -467,4 +470,10 @@ $logo-color: #fff;
 
 .post-content img{
   max-width:200px;
+}
+.post-content img{
+  max-width:100%;
+  display:block;
+  margin:auto;
+
 }

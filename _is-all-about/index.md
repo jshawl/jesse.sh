@@ -3,7 +3,7 @@ layout: default
 title: About
 ---
 
-<div class="wrapper">
+<div class="wrapper about">
   <article>
     <img src="/img/me.jpg" class='me' alt="" style=''>
     <h2>Jesse Shawl</h2>
