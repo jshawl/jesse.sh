@@ -417,18 +417,12 @@ $logo-color: #fff;
   .site-nav {
     position: fixed;
     z-index: 10;
-    top: 14px; right: 8px;
-    background-color: white;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: 1px solid #e8e8e8;
+    top: 10px; right: 8px;
   }
 
   .site-nav .menu-icon {
     display: block;
-    font-size: 24px;
-    color: #505050;
+    font-size: 14px;
     float: right;
     width: 36px;
     text-align: center;
@@ -441,6 +435,7 @@ $logo-color: #fff;
     clear: both;
     margin-bottom: 5px;
     display: none;
+    background:#fff;
   }
 
   .site-nav:hover .trigger { display: block; }
