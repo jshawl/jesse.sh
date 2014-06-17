@@ -58,6 +58,12 @@ a         { color: lightGreen; text-decoration: none; }
 a:hover   { color: #fff; text-decoration: underline; }
 a:visited { color: #FF34B3; }
 
+.edit, .edit:visited{
+  border:2px solid #fff;
+  padding:.5em 1em;
+  display:inline-block;
+}
+
 $xy:6px;
 $logo-color: #fff;
 
