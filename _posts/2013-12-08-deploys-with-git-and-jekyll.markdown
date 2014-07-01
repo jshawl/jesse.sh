@@ -53,7 +53,7 @@ Next, create the directory for your jekyll site on the web server:
     $ cd /var/www/
     $ git clone /git/jekyll-site.git
 
-<h3 id='installing-build-tools-on-the-server'>Intalling build tools on the server</h3>
+<h3 id='installing-build-tools-on-the-server'>Installing build tools on the server</h3>
 
 Using build tools in our deploy strategy guarantees that 1) no compiled files are being edited, and 2) compiled files are absent from source control.
 
