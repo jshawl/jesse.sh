@@ -8,6 +8,9 @@ description: "Jesse Shawl makes websites."
 markdown: kramdown
 permalink: /:title/
 
+sass:
+    sass_dir: scss
+
 collections:
   teaches:
     output: true
