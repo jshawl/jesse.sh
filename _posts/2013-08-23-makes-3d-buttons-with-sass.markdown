@@ -152,6 +152,6 @@ And finally, we can make our button super 3D by `@include`'ing the mixin:
 
 <br><br>
 <p data-height="300" data-theme-id="788" data-slug-hash="bcjyH" data-user="jshawl" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/jshawl/pen/bcjyH'>bcjyH</a> by Jesse Shawl (<a href='http://codepen.io/jshawl'>@jshawl</a>) on <a href='http://codepen.io'>CodePen</a></p>
-<script async src="http://codepen.io/assets/embed/ei.js"></script>
+<script src="http://codepen.io/assets/embed/ei.js"></script>
 
 
