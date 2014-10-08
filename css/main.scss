@@ -14,9 +14,13 @@ html, body {
 }
 
 body{
-  padding:4em 2em;
+  padding:2em 2em;
+  @media all and (max-width:40em){
+    padding-top:1em;
+  }
   line-height:1.5;
 }
+
 
 
 code{
@@ -60,6 +64,10 @@ article{
   float:left;
   max-width:200px;
   padding:0 2em .5em 0;
+  @media all and (max-width:30em){
+    max-width:100%;
+    padding-right:0;
+  }
 }
 
 $xy:6px;
@@ -88,16 +96,16 @@ $logo-color: #000;
   }
 }
 
-.cf:after{
+.cf:after, article:after{
   content:'';
   display:table;
   clear:both;
 }
 
 .site-header{
-  margin-bottom:3em;
+  padding:2em 0;
     @media all and(max-width:40em){
-      margin-bottom:1em;
+      padding:1em 0;
     }
 }
 
@@ -112,15 +120,19 @@ $logo-color: #000;
     padding:1em;
     @media all and(max-width:40em){
       padding-left:0;
+      padding-bottom:0;
     }
     text-decoration:none;
-    color:#42B4E6;
-    &:visited{
-      color:#aaa;
-    }
     &:last-child{
       padding-right:0;
     }
+  }
+}
+
+a{
+  color:#43A8F8;
+  &:visited{
+    color:#aaa;
   }
 }
 
@@ -138,7 +150,11 @@ footer a{
 
 footer svg{
   width:2em;
+  height:2em;
   display:block;
+  path{
+    fill:#000;
+  }
 }
 
 .post-date{
@@ -151,7 +167,7 @@ footer svg{
   li{
     margin:2em 0;
     a{
-      font-size:1.25em;
+      font-size:1em;
       color:#000;
       text-decoration:none;
       font-weight:bold;
@@ -161,6 +177,7 @@ footer svg{
 }
 
 footer{
+  margin-top:2em;
   clear:both;
   ul{
     padding:0;
