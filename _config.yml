@@ -18,3 +18,5 @@ collections:
     output: true
   makes-things:
     output: true
+  ideas:
+    output: true
