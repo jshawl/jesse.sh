@@ -1,9 +1,7 @@
 ---
 layout: post
 title:  "Practical Applications of Pseudo Elements and Classes"
-date:   2013-12-12
 summary: Understanding what pseudo classes and pseudo elements are used for can be a bit confusing at first. What are they used for? Why are they pseudo?!
-author: jesse
 ---
 
 <style>
