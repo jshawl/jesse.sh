@@ -14,9 +14,9 @@ html, body {
 }
 
 body{
-  padding:2em 2em;
+  padding:2em;
   @media all and (max-width:40em){
-    padding-top:1em;
+    padding:1em;
   }
   line-height:1.5;
 }
@@ -105,7 +105,7 @@ $logo-color: #000;
 .site-header{
   padding:2em 0;
     @media all and(max-width:40em){
-      padding:1em 0;
+      padding:0;
     }
 }
 
@@ -115,6 +115,10 @@ $logo-color: #000;
 
 .site-nav{
   float:right;
+    @media all and(max-width:30em){
+      clear:both;
+      float:left;
+    }
   a{
     display:inline-block;
     padding:1em;
