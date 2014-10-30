@@ -2,7 +2,7 @@
 layout: post
 ---
 
-I've recently remove the `/finds-links` url from my site, which was a jQuery plugin powered by pocket.
+I've recently removed the `/finds-links` url from my site, which was a jQuery plugin powered by pocket.
 
 This project, "The Q" has come back to life as a rails application that lets users expose links saved in
 their Pocket account. Check it out at <http://the--q.herokuapp.com/>. I might bring back the `/finds-links` page
