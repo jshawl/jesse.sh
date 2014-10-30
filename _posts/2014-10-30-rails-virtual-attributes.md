@@ -1,5 +1,6 @@
 ---
 layout: post
+title: "Rails JSON Virtual Attributes"
 ---
 
 I was working on a rails application that responded with the following JSON:
