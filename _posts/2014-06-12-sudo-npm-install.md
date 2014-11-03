@@ -26,3 +26,14 @@ install code on your system with super user privileges. <https://www.npmjs.org/d
     $ sudo chown -R `whoami` /usr/local/lib/node_modules
 
 This will allow you to globally edit npm packages without `sudo`. i.e. `npm install -g package-name`.
+
+## Update 11-3-2014
+
+According to [this stackoverflow answer](http://stackoverflow.com/a/21712034/850825), another option
+for avoiding using `sudo` with `npm install` is to change the directory where npm installs
+global packages:
+
+    $ npm config set prefix ~/npm
+
+And add this directory to your `$PATH`. Add `export PATH="$PATH:$HOME/npm/bin"` to the end of your
+`~/.bashrc` or `~/.zshrc` file.
