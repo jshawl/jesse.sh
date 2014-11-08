@@ -6,6 +6,11 @@ type: page
 
 <div class="wrapper projects">
     <article>
+	<h2>BKBRNR</h2>
+	<p>Bkbrnr is a place where I store all my project ideas. Some are just thoughts, others have repos and code, and a few are even deployed.</p>
+	<a href='http://bkbrnr.com/jshawl'>Browse the backburner</a>.
+    </article>
+    <article>
 	<h2>Precess</h2>
 	<a href='http://precess.co/'><img src='/img/precess.png' alt='Prcess'></a>
 	<p>I wanted to enhance my Ruby skills by making a Sinatra app, so I built my own real-time Sass (and Less) compiler after listening
