@@ -5,7 +5,7 @@ title: "sudo npm install -g is an antipattern"
 
 ![](http://imgs.xkcd.com/comics/sandwich.png)
 
-Earlier this week, I begun working on my first npm package. I've published it,
+Earlier this week, I began working on my first npm package. I've published it,
 but only to understand how packages are distributed via npmjs.org.
 
 I built a simple little command line tool to upload files to my server and print out the url to the
