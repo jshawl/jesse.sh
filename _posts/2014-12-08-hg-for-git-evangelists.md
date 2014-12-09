@@ -4,7 +4,7 @@ title: "Mercurial for Git Evangelists"
 ---
 
 I’ve been playing around with mercurial as of late as a way to enhance what I know about git
-and version control in general. These are my notes.
+and version control in general. These are my in-progress notes.
 
 ## A lot of things are familiar
 
@@ -38,6 +38,3 @@ git’s `HEAD`.
 ## Multiple HEADs
 
 `hg update` feels a bit like `git reset`, but is less dangerous in terms of its ability to rewrite history.
-
-
-
