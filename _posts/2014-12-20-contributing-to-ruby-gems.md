@@ -27,7 +27,7 @@ First install dependencies:
 
 And build the gem:
 
-    $ gem build gem build sinatra-simple-authentication.gemspec 
+    $ gem build sinatra-simple-authentication.gemspec 
 
 ## Require the local gem from another ruby app
 
