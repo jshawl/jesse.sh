@@ -104,3 +104,8 @@ Deploying your jekyll site from a local machine is now only a matter of running:
     $ git push origin master
 
 Happy updating!
+
+## Update 02-26-2015
+
+I recently built a tool - <https://updog.co> that lets you host your jekyll site using dropbox. Anytime you build the
+site locally with `jekyll build`, the changes will be synced to dropbox and available to view instantly.
