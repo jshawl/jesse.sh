@@ -6,6 +6,11 @@ type: page
 
 <div class="wrapper projects">
     <article>
+	<h2>Restful.link</h2>
+	<p>Inspect RESTful http requests, and be notified of new requests via websockets!</p>
+	<a href='http://restful.link/'>Check it out</a>.
+    </article>
+    <article>
 	<h2>Updog</h2>
 	<a href='https://updog.co/'><img src='/img/updog.png' alt='Updog'></a>
 	<p>UpDog is a static website host, powered by DropBox</p>
