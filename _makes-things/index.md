@@ -6,6 +6,12 @@ type: page
 
 <div class="wrapper projects">
     <article>
+	<h2>Gistalt</h2>
+	<a href='http://gistalt.co/'><img src='/img/gistalt.png' alt='Gistalt logo'></a>
+	<p><a href='http://dvncan.com'>Duncan Graham</a> and I built a beautiful interface to create and edit GitHub gists.</p>
+	<a href='http://gistalt.co/'>Check it out</a>.
+    </article>
+    <article>
 	<h2>Restful.link</h2>
 	<p>Inspect RESTful http requests, and be notified of new requests via websockets!</p>
 	<a href='http://restful.link/'>Check it out</a>.
