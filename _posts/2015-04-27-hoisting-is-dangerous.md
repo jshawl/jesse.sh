@@ -1,5 +1,6 @@
 ---
 layout: post
+title: "Hoisting Can Be Dangerous"
 ---
 
 Hoisting is often convenient in JavaScript. It allows us to call functions before they’re defined:
