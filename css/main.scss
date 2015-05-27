@@ -54,6 +54,9 @@ header{
   padding:.5em 1em;
   left:1em;
   right:1em;
+  @media all and(max-width:50em){
+    font-size:.8em;
+  }
   a{
     color: #fff;
     text-decoration:none;
@@ -147,4 +150,8 @@ section{
     display:block;
     padding-left:2em;
   }
+}
+
+nav a{
+  display:inline-block;
 }

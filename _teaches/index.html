@@ -41,7 +41,9 @@ events:
 {% for event in page.events %}
 <li>
   <a href="{{event.url}}">{{event.title}}</a>
-  {{event.description}}
+  <div class='description'>
+    {{event.description}}
+  </div>
 </li>
 {% endfor %}
 </ul>
