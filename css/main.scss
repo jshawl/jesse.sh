@@ -3,6 +3,36 @@
 
 @import 'syntax';
 
+$xy:6px;
+$logo-color: #000;
+
+.site-title.logo{
+  width:5 * $xy;
+  margin-top:-$xy;
+  height:7 * $xy;
+  display:inline-block;
+  position:relative;
+  &:after{
+    content:'';
+    display:block;
+    position:absolute;
+    left:0;
+    top:0;
+    height:$xy;
+    width:$xy;
+    box-shadow: 2 * $xy $xy 0 $logo-color
+              , 2 * $xy 3 * $xy 0 $logo-color
+              , 2 * $xy 4 * $xy 0 $logo-color
+              , 2 * $xy 5 * $xy 0 $logo-color
+              , 1 * $xy 5 * $xy 0 $logo-color
+              , 3 * $xy 3 * $xy 0 $logo-color;
+  }
+}
+
+img{
+  max-width:100%;
+}
+
 *{
   box-sizing:border-box;
 }
@@ -49,7 +79,7 @@ section{
   padding-left:4rem;
   padding-bottom:7em;
     @media all and (max-width:50em){
-      padding-left:0;
+      padding:0 1rem 7rem 1rem;
     }
   h2{
     margin-left:-4rem;
@@ -66,6 +96,13 @@ section{
     list-style:none;
     li a{
       color:#60605F;
+      &:visited{
+	color:#bbb;
+        text-decoration:none;
+      }
+    }
+    li {
+      margin:.5em 0;
     }
   }
 }

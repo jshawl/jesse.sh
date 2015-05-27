@@ -16,8 +16,8 @@ projects:
     description: <p>Bkbrnr is a place where I store all my project ideas. Some are just thoughts, others have repos and code, and a few are even deployed.</p>
     url: 'http://bkbrnr.com/jshawl'
   - title: Precess
-    description: <p>I wanted to enhance my Ruby skills by making a Sinatra app, so I built my own real-time Sass (and Less) compiler after listening to the server architecture talk on the <a href='http://blog.codepen.io/radio/'>Codepen radio</a>.</p> <p> The application sits behind an Nginx reverse proxy to the Unicorn server. In order to compile Less, requests are made to an express app listening for compile requests.  'https://github.com/jshawl/precess/'>View the source on GitHub</a>.  </p>
-    url: http://precess.go
+    description: <p>I wanted to enhance my Ruby skills by making a Sinatra app, so I built my own real-time Sass (and Less) compiler after listening to the server architecture talk on the <a href='http://blog.codepen.io/radio/'>Codepen radio</a>.</p> <p> The application sits behind an Nginx reverse proxy to the Unicorn server. In order to compile Less, requests are made to an express app listening for compile requests.  
+    url: http://precess.co
   - title: Unqueue
     description: <p>My <a href='http://getpocket.com'>Pocket</a> runneth over, and I needed a one click solution to mark all of the items in my queue as read. There wasn't one, so I rolled my own with the Pocket API. <a href="http://jshawl.com/unqueue/">Check it out!</a></p>
     url: "http://jshawl.com/unqueue/"
