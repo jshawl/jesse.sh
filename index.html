@@ -1,7 +1,20 @@
 ---
 layout: default
+title: "BSD General Commands Manual"
 ---
 
+
+  <h2>Name</h2>
+  <p><strong>Jesse Shawl</strong> -- Web Development Immersive Instructor at General Assembly</p>
+  <h2>Options</h2>
+  <nav>
+	<a href="mailto:jesse@jshawl.com">[jesse@jshawl.com]</a>
+	<a class="page-link" href="/">[-b Blog]</a>
+	<a class="page-link" href="/makes-things/">[-p Projects]</a>
+	<a class="page-link" href="/teaches/">[-t Teaching]</a>
+	<a class="page-link" href="/is-all-about/">[-a About]</a>
+  </nav>
+  <h2>Posts</h2>
   <ul class="posts">
     {% for post in site.posts %}
       <li>
@@ -12,5 +25,16 @@ layout: default
   </ul>
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <h2>Contact</h2>
+<footer class="site-footer">
+      <ul>
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li>
+          <a href="https://github.com/{{ site.username }}">GitHub</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/{{ site.username }}">Twitter</a>
+        </li>
+      </ul>
+</footer>
 
-</div>

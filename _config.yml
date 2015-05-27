@@ -18,3 +18,13 @@ collections:
     output: true
   makes-things:
     output: true
+
+navigation:
+  - title: Blog
+    url: /index.html
+  - title: About
+    url: /is-all-about/index.html
+  - title: Projects
+    url: /makes-things/index.html
+  - title: Teaching
+    url: /teaches/index.html
