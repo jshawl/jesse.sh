@@ -25,7 +25,7 @@
 	  {% elsif page.url == item.url %}
 	    {% assign class = 'active' %}
 	  {% endif %}
-	  <a href="{{ item.url }}" class="page-link {{class}}">{{ item.title }}</a>
+	  <a href="{{ item.url }}" class="page-link js-tmux {{class}}">{{ item.title }}</a>
 	{% endfor %}
       </div>
     </nav>
@@ -56,7 +56,7 @@
     s.parentNode.insertBefore(t, s);
   })();
 </script>
-<script src='//tally.jshawl.com/track.js' data-code="1x" data-tally></script>
+<script src='/js/app.js'></script>
 
     </body>
 </html>
