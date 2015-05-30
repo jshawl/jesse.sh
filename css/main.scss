@@ -55,7 +55,7 @@ header{
   left:1em;
   right:1em;
   @media all and(max-width:50em){
-    font-size:.8em;
+    font-size:.6em;
   }
   a{
     color: #fff;
@@ -154,7 +154,7 @@ section{
 
 nav > a{
   display:inline-block;
-@media all and (max-width:40em){
-  padding:.5em 0;
-}
+  @media all and (max-width:40em){
+    padding:.5em 0;
+  }
 }
