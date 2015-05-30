@@ -152,6 +152,9 @@ section{
   }
 }
 
-nav a{
+nav > a{
   display:inline-block;
+@media all and (max-width:40em){
+  padding:.5em 0;
+}
 }
