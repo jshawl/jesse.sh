@@ -57,4 +57,7 @@
       }
     }
   })
+  // Commits
+  if(window.location.pathname.match("makes-things")){
+  }
 })()

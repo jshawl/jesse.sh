@@ -36,5 +36,5 @@ projects:
 	</li>
       {% endfor %}
     </ul>
-
 </div><!-- wrapper -->
+<script src="/js/recent-commits.js"></script>
