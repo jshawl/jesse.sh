@@ -2,7 +2,7 @@
 layout: post
 ---
 
-I just finished the art of Unix programming and I highly recommend it. I ended up reading the book cover to cover but it's written in such a way that you can skip around if you like. Despite being last updated over 12 years ago, the book is surprisingly relevant today and I wanted to document some of my favorite parts: 
+I just finished [The Art of Unix Programming](http://www.catb.org/esr/writings/taoup/html/) and I highly recommend it. I ended up reading the book cover to cover but it's written in such a way that you can skip around if you like. Despite being last updated over 12 years ago, the book is surprisingly relevant today and I wanted to document some of my favorite parts: 
 
 ## Configuration
 
