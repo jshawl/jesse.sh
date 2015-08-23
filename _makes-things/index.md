@@ -3,6 +3,9 @@ layout: default
 title: Projects
 type: page
 projects:
+  - title: Slackbot Reminders
+    description: <p>Send a direct message to the bot:</p> <blockquote> <p>Walk the dog; at 5pm</p> </blockquote> <p>Everything before the ";" is the reminder. Everything after the semi-colon is when the reminder will be sent back.  The complete list of available time descriptions can be found here - <a href="https://github.com/mojombo/chronic#examples">https://github.com/mojombo/chronic#examples</a></p> <p>The bot will reply with your reminder at the specified time via direct message.</p>
+    url: "https://github.com/jshawl/slackbot-reminders"
   - title: Gistalt
     description: <p><a href='http://dvncan.com'>Duncan Graham</a> and I built a beautiful interface to create and edit GitHub gists.</p>
     url: "http://gistalt.co"
