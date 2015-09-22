@@ -15,18 +15,18 @@ me to both read and create modules. Let's start with creating a module.
 
 We want the interface to be something like
 
-```js
+{% highlight js %}
 injector.module("egg",[],{
   hatch: function(){
     console.log("chirp chirp") 
   }
 })
-```
+{% endhighlight %}
 
 Where the name of the module is the first argument, the second argument is
 an array of dependencies, and the third argument is the module's prototype (methods and attributes).
 
-```js
+{% highlight js %}
 var injector = { // global namespace
   module: function(name, dependencies, prototype){
     var module = { // a custom template for modules
@@ -41,20 +41,20 @@ var injector = { // global namespace
   },
   _modules: {}
 }
-```
+{% endhighlight %}
 
-```js
+{% highlight js %}
 var egg = injector.module('egg',[],{
   hatch: function(){
     console.log("chirp chirp")
   }
 })
 egg.hatch()
-```
+{% endhighlight %}
 
 If there is only the first argument, the injector assumes the module has already been defined and returns the module's prototype.
 
-```js
+{% highlight js %}
 var injector = { // global namespace
   module: function(name, dependencies, prototype){
     if(!dependencies){
@@ -73,24 +73,24 @@ var injector = { // global namespace
   _modules: {}
 }
 injector.module("egg").hatch()
-```
+{% endhighlight %}
 
 Now that we can read and write modules, let's try seeing if a module's dependencies have been loaded before calling methods.
 
 The angular-style of injecting dependencies is:
 
-```js
+{% highlight js %}
 injector.module('name of module',['array','of','dependencies',function(array, of, dependencies){
   // if each module name in the array is defined and the last element
   // is a function, invoke the function with each dependency as an argument.
 }])
-```
+{% endhighlight %}
 
 ## Raising Errors when Dependencies Are Not Met
 
 If the specified dependency is not already defined in `injector._modules`, raise an error:
 
-```js
+{% highlight js %}
 for( var i = 0; i < dependencies.length; i++ ){
   var dependency = dependencies[i]
   var loaded = this._modules[dependency] ? true : false
@@ -98,7 +98,7 @@ for( var i = 0; i < dependencies.length; i++ ){
     throw new Error("Dependency not met: " + dependency)
   }
 }
-```
+{% endhighlight %}
 
 https://repl.it/BJrx/1
 
@@ -107,25 +107,25 @@ https://repl.it/BJrx/1
 While in the loop, if the `typeof` the element is a function, we can assume it is the last
 element of the array, and invoke it with each of the modules.
 
-```js
+{% highlight js %}
 if( typeof dependency == "function" ){
   var modules = dependencies.map(function(d){ // map names of modules to actual modules
     return this._modules[d]
   }.bind(this)) // preserve context
   return dependency.apply(this, modules) // unknown number of dependencies
 }
-```
+{% endhighlight %}
 
 This code must come before the error-raising code above. That is, a `return` is necessary after the
 function's invocation to prevent the "module not met" dependency error.
 
 We now have an interface like this:
 
-```js
+{% highlight js %}
 injector.module('chicken',['egg', function(egg){
     egg.hatch()
 }])
-```
+{% endhighlight %}
 
 https://repl.it/BJrx/2
 
@@ -137,7 +137,7 @@ I was thinking it would be nice to be able to asynchronously load modules, but I
 
 Here's the dependency injector all together:
 
-```js
+{% highlight js %}
 var injector = { // global namespace
   module: function(name, dependencies, prototype){
     if(!dependencies){
@@ -176,6 +176,6 @@ injector.module('egg',[],{
 injector.module('chicken',['egg', function(egg){
   egg.hatch()
 }])
-```
+{% endhighlight %}
 
 https://repl.it/BJrx/4 | https://github.com/jshawl/dependency-injection
