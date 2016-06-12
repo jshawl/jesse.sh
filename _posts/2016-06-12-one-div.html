@@ -10,7 +10,6 @@ layout: nil
         height: 100%;
         width:100%;
         margin:0;
-        background:red;
       }
       .grid{
         position:absolute;
@@ -28,6 +27,7 @@ layout: nil
 	height:20px;
 	width:20px;
 	background:transparent;
+	position:relative;
       }
       .ctrl {
         position:absolute;
@@ -36,10 +36,18 @@ layout: nil
         background:#222;
         padding:1em;
         color: #fff;
+	width:25%;
         font-family:'Monaco', monospace;
       }
       label{
         display:block;
+      }
+      .code{
+        background:#eee;
+	color:#222;
+	padding:1em;
+	box-sizing:border-box;
+        white-space:normal
       }
     </style>
   </head>
@@ -52,11 +60,14 @@ layout: nil
       <input type='range' min=1 max=50 value=20>
       <label>color</label>
       <input type='color'>
+      <pre class='code'></pre>
     </div>
     <script>
       var grid = document.querySelector(".grid")
       var box = document.querySelector(".box")
       var range = document.querySelector("[type='range']")
+      var color = document.querySelector("[type='color']")
+      var code = document.querySelector(".code")
       var isDragging = false
       range.addEventListener("input", onChange)
       grid.addEventListener("mousedown", onClick)
@@ -67,35 +78,28 @@ layout: nil
       }
       function onClick(event){
         isDragging = true
+        generateBoxShadows(updateData(event, true))
+      }
+      function updateData(event, remove){
 	var x = (event.offsetX - (event.offsetX % boxSize())) / boxSize()
 	var y = (event.offsetY - (event.offsetY % boxSize())) / boxSize()
         var shadows = box.getAttribute("data-box-shadows").split(";")
-        var bs = x+','+y
-	if(shadows.indexOf(bs) != -1){
+        var bs = x+','+y+','+ color.value
+	box.style.background = ""
+	if(shadows.indexOf(bs) != -1 && remove){
 	  shadows.splice(shadows.indexOf(bs),1)
-	} else {
+	} else if(shadows.indexOf(bs) == -1){
 	  shadows.push(bs)
 	}
         var nbs = shadows.filter(function(s){
           return s !== ""
 	})
         box.setAttribute('data-box-shadows', nbs.join(";"))
-        generateBoxShadows(nbs)
+	return nbs
       }
       function onMove(event){
         if(!isDragging) return
-	var x = (event.offsetX - (event.offsetX % boxSize())) / boxSize()
-	var y = (event.offsetY - (event.offsetY % boxSize())) / boxSize()
-        var shadows = box.getAttribute("data-box-shadows").split(";")
-        var bs = x+','+y
-	if(shadows.indexOf(bs) === -1){
-	  shadows.push(bs)
-	}
-        var nbs = shadows.filter(function(s){
-          return s !== ""
-	})
-        box.setAttribute('data-box-shadows', nbs.join(";"))
-        generateBoxShadows(nbs)
+        generateBoxShadows(updateData(event))
       }
       function onUp(event){
         isDragging = false
@@ -109,18 +113,46 @@ layout: nil
         generateBoxShadows(shadows)
       }
       function scale(d){
-        return parseInt(d) * parseInt(boxSize())
+        return parseInt(d) * parseInt(boxSize()) || 0
       }
       function generateBoxShadows( shadows ){
         var styles = shadows.map(function(s){
           var offset = s.split(",")
           var x = offset[0]
           var y = offset[1]
-          var color = offset[2]
-          return scale(x) + "px " + scale(y) + "px 0 red"// + color
+          var color = offset[2] || "transparent"
+	  if(x == 0 && y == 0){
+	    box.style.background = color
+	  }
+          return scale(x) + "px " + scale(y) + "px 0 " + color
         }).join(",")
         box.style.boxShadow = styles
+	console.log(styles)
+        output = outputStyles([
+	  'box-shadow: ' + styles + ';',
+	  'height: ' + boxSize() + 'px;',
+	  'width: ' + boxSize() + 'px;'
+	])
+	code.innerHTML = ".box{"+output+"}"
       }
+      function outputStyles(styles){
+        return "<br>" + styles.map(function(style){
+     	  return "&nbsp;&nbsp;" + style
+	}).join("<br>") + "<br>"
+      }
+    </script>
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+	var t   = document.createElement('script');
+	t.type  = 'text/javascript';
+	t.async = true;
+	t.id    = 'gauges-tracker';
+	t.setAttribute('data-site-id', '54521d778bfdf72812001416');
+	t.src = '//secure.gaug.es/track.js';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(t, s);
+      })();
     </script>
   </body>
 </html>
