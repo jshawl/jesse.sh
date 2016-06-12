@@ -1,0 +1,126 @@
+---
+layout: nil
+---
+
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body, html, .grid{
+        height: 100%;
+        width:100%;
+        margin:0;
+        background:red;
+      }
+      .grid{
+        position:absolute;
+	top: 0;
+        left:0;
+	background-color:#ddd;
+	background-image: 
+	linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+	linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+	background-size:20px 20px, 20px 20px;
+	background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+        cursor:pointer;
+      }
+      .box{
+	height:20px;
+	width:20px;
+	background:transparent;
+      }
+      .ctrl {
+        position:absolute;
+        top:10px;
+        right: 10px;
+        background:#222;
+        padding:1em;
+        color: #fff;
+        font-family:'Monaco', monospace;
+      }
+      label{
+        display:block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='grid'>
+      <div class='box' data-box-shadows=""></div>
+    </div>
+    <div class='ctrl'>
+      <label>pixel size</label>
+      <input type='range' min=1 max=50 value=20>
+      <label>color</label>
+      <input type='color'>
+    </div>
+    <script>
+      var grid = document.querySelector(".grid")
+      var box = document.querySelector(".box")
+      var range = document.querySelector("[type='range']")
+      var isDragging = false
+      range.addEventListener("input", onChange)
+      grid.addEventListener("mousedown", onClick)
+      grid.addEventListener("mousemove", onMove)
+      grid.addEventListener("mouseup", onUp)
+      var boxSize = function(){
+        return range.value
+      }
+      function onClick(event){
+        isDragging = true
+	var x = (event.offsetX - (event.offsetX % boxSize())) / boxSize()
+	var y = (event.offsetY - (event.offsetY % boxSize())) / boxSize()
+        var shadows = box.getAttribute("data-box-shadows").split(";")
+        var bs = x+','+y
+	if(shadows.indexOf(bs) != -1){
+	  shadows.splice(shadows.indexOf(bs),1)
+	} else {
+	  shadows.push(bs)
+	}
+        var nbs = shadows.filter(function(s){
+          return s !== ""
+	})
+        box.setAttribute('data-box-shadows', nbs.join(";"))
+        generateBoxShadows(nbs)
+      }
+      function onMove(event){
+        if(!isDragging) return
+	var x = (event.offsetX - (event.offsetX % boxSize())) / boxSize()
+	var y = (event.offsetY - (event.offsetY % boxSize())) / boxSize()
+        var shadows = box.getAttribute("data-box-shadows").split(";")
+        var bs = x+','+y
+	if(shadows.indexOf(bs) === -1){
+	  shadows.push(bs)
+	}
+        var nbs = shadows.filter(function(s){
+          return s !== ""
+	})
+        box.setAttribute('data-box-shadows', nbs.join(";"))
+        generateBoxShadows(nbs)
+      }
+      function onUp(event){
+        isDragging = false
+      }
+      function onChange(event){
+        var d = event.target.value
+        box.style.width = d + "px"
+        box.style.height = d + "px"
+        grid.style.backgroundSize = d+"px "+d+"px, "+d+"px "+d+"px"
+        var shadows = box.getAttribute("data-box-shadows").split(";")
+        generateBoxShadows(shadows)
+      }
+      function scale(d){
+        return parseInt(d) * parseInt(boxSize())
+      }
+      function generateBoxShadows( shadows ){
+        var styles = shadows.map(function(s){
+          var offset = s.split(",")
+          var x = offset[0]
+          var y = offset[1]
+          var color = offset[2]
+          return scale(x) + "px " + scale(y) + "px 0 red"// + color
+        }).join(",")
+        box.style.boxShadow = styles
+      }
+    </script>
+  </body>
+</html>
