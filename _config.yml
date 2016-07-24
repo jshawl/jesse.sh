@@ -14,10 +14,13 @@ sass:
 collections:
   teaches:
     output: true
+    permalink: /teaches/:path.html
   is-all-about:
     output: true
+    permalink: /is-all-about/:path.html
   makes-things:
     output: true
+    permalink: /makes-things/:path.html
 
 navigation:
   - title: Blog
