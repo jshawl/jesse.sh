@@ -3,6 +3,9 @@ layout: default
 title: Projects
 type: page
 projects:
+  - title: Better Express Errors
+    description: <p>Middleware to make expressjs errors readable.</p>
+    url: "https://www.npmjs.com/package/better-express-errors"
   - title: stopgap.store
     description: <p>An ephemeral REST API for creating REST APIs.</p>
     url: "https://stopgap.store/"
