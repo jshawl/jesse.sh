@@ -3,6 +3,9 @@ layout: default
 title: Projects
 type: page
 projects:
+  - title: Colors Between
+    description: <p>Generate n colors between two other colors</p>
+    url: "https://jshawl.github.io/colors-between/"
   - title: Better Express Errors
     description: <p>Middleware to make expressjs errors readable.</p>
     url: "https://www.npmjs.com/package/better-express-errors"
