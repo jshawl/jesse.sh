@@ -202,10 +202,10 @@ Instead of printing a div for folder entries:
 ```html
 <div v-for="file in files">
   <div v-if="file.tag == 'folder'" v-on:click='toggleExpand()'>
-    {{file.name}}/
+    {%raw%}{{file.name}}{%endraw%}/
   </div>
   <div v-else>
-    {{file.name}}
+    {%raw%}{{file.name}}{%endraw%}
   </div>
 </div>
 ```
@@ -216,7 +216,7 @@ We'll print a component instance:
 <div v-for="file in files">
   <folder v-if="file.tag == 'folder'"></folder>
   <div v-else>
-    {{file.name}}
+    {%raw%}{{file.name}}{%endraw%}
   </div>
 </div>
 ```
@@ -272,7 +272,7 @@ And print it out in the template:
 ```html
 <script type="x-template" id='folder'>
   <div v-on:click="toggleExpand()">
-    {{file.name}}/
+    {%raw%}{{file.name}}{%endraw%}/
   </div>
 </script>
 ```
@@ -312,7 +312,7 @@ and display the value of `isOpen` inside the template:
 ```html
 <script type="x-template" id='folder'>
   <div v-on:click="toggleExpand()">
-    {{file.name}}/
+    {%raw%}{{file.name}}{%endraw%}/
     <span v-if='isOpen'>show children</span>
   </div>
 </script>
@@ -341,7 +341,7 @@ if the given file has a truthy `files` attribute _and_ the `isOpen` value is tru
 <script type="x-template" id='folder'>
   <div>
     <div v-on:click="toggleExpand()">
-      {{file.name}}/
+      {%raw%}{{file.name}}{%endraw%}/
     </div>
     <tree v-if='isOpen && file.files'></tree>
   </div>
@@ -356,7 +356,7 @@ with an attribute on the tree component:
 <script type="x-template" id='folder'>
   <div>
     <div v-on:click="toggleExpand()">
-      {{file.name}}/
+      {%raw%}{{file.name}}{%endraw%}/
     </div>
     <tree v-if='isOpen && file.files' :children='file.files'></tree>
   </div>
