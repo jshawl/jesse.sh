@@ -11,7 +11,7 @@ projects:
     url: "https://www.npmjs.com/package/better-express-errors"
   - title: stopgap.store
     description: <p>An ephemeral REST API for creating REST APIs.</p>
-    url: "https://stopgap.store/"
+    url: "https://github.com/jshawl/stopgap"
   - title: eval.js.org
     description: <p>Evaluate and share your JavaScript. <a href='http://eval.js.org/#/12/0'>View an Example</a></p>
     url: "http://eval.js.org/"
