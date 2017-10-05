@@ -2,12 +2,83 @@
 ---
 
 @import 'syntax';
+@media all and (max-width:40em){
+  body{
+    font-size:75%;
+  }
+}
+code{
+  &:before, &:after{
+    content:'`';
+  }
+}
+
+html, body{
+  width:100%;
+  box-sizing: border-box;
+}
 
 pre code{
   font-family:'Monaco', monospace;
   font-size: .8em;
+  overflow: scroll;
+  display:block;
+  &:before, &:after{
+    content:'```';
+    display:block;
+  }
 }
 
 img{
   max-width:100%;
+}
+
+ul{
+  padding-left:0;
+}
+ul li{
+  list-style:none;
+  &:before{
+    content: '- ';
+  }
+}
+
+body{
+  padding: 2em;
+  line-height: 1.5;
+  font-family: Monaco;
+  color:#222;
+  max-width:45em;
+  margin:auto;
+}
+
+h1, h2, h3, h4 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+h1:before{
+  content: '# ';
+}
+
+h2:before{
+  content: '## ';
+}
+
+h3:before{
+  content: '### ';
+}
+
+em:before, em:after {
+  content:'_'
+}
+strong:before, strong:after{
+  content:'**'
+}
+
+[href]:before{
+  content:'['
+}
+[href]:after{
+  content:']'
 }

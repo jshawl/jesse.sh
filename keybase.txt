@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/jshawl
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://jesse.sh
+  * I am jshawl (https://keybase.io/jshawl) on keybase.
+  * I have a public key with fingerprint A7D6 9D8E 4890 780A 6598  7BF0 0060 9B50 41C8 7746
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101906f78f341f65c5921b809c7fb9e9ddaa8f02eacd6c8b8440b1f7fd5ec14728f0a",
+      "fingerprint": "a7d69d8e4890780a65987bf000609b5041c87746",
+      "host": "keybase.io",
+      "key_id": "00609b5041c87746",
+      "kid": "0101906f78f341f65c5921b809c7fb9e9ddaa8f02eacd6c8b8440b1f7fd5ec14728f0a",
+      "uid": "ee761a39927374de7005b27d2bc29000",
+      "username": "jshawl"
+    },
+    "service": {
+      "hostname": "jesse.sh",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1507166354,
+  "expire_in": 157680000,
+  "prev": "df543b9336adf0a4a4f8b97fc2567b79ad1ed32bfd297a8ab31d1f9783bb4cd2",
+  "seqno": 6,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.74
+Comment: https://keybase.io/crypto
+
+yMIjAnicrVJbSFRRFJ1pJk1jIjQI0fq4QRBpnfs894wggkUQFAyBWBbDOfecO3Nt
+nLnOnRm1qa8IAykoNHpAQh9GZE8pIgK1JASpGMgYhBJ6jRUUQflIyM6t/Oq3r8PZ
+e62119rs0YDPU+o99rLywcbX/kve8ZFTac/eieOnswJJ0E4hmBUOst8Pi1HmpMIH
+LSoEBSACEQHNhLopK6KpqYaKJJHoABnQJIghSjHWTSAxbFDN0ImuKICIJjSpygxR
+gRJvYqFaMK14hCXtpBVPcVkMqYaozhQdAagDrKlIh8QEAGgAERUooqFDqGicGE04
+LoObI9hhW6wEr/FP+I+9f/H/2Xf6txxjUBOxjJAEZahQBgFQiQSpRAwJcdcu0GHJ
+OG5lHN3iRHF7TDhSLfBaxjKYu1Y3x1KfOTyJE+UsO5lIJYxEjFejqZTtBF1WqtN2
+Ye2MhP8KhIkVp3yDnJFhScdKxIWgyJFGynIVRRVAUdNkVakWWIdtJVnYchEq1HTu
+DrhzWIZLUlNVZIJkWcOU51OwYuoEQdOQVA0SiDAVGZUlYlIJQaxjIotUNBHUZUIU
+g0qCG6ktnhCCGreJI1zSsSJxnEonmXDk4fB+v8db6ilavsy9LE9pyeqle1uzp3ix
+5XBbV+7bi9EHH472X30UinacmA4nr/be9o71BtZXTJR/7G8WdN+m3LxeyMXWF93p
+nAugW/6VcGqh/tnZsaba+YHLpxrPGOG1uaG3H7a+D9U1vqu6drK27k3l/Znnzazg
+P9td+/mJPXOopXnghj3bSqYe5bY9tnct1jR12ZvbTuSbLuzszlbeKw6ev75i1b7I
+0cB4cFjdamw5sKMiNHfx7ecrVl+k//zgU3p35cdQTWG2p+9rbEO+9/V4w+X0oH92
+w5Bv8lVZ492b2ZKiL3vWVexsKfv0c5rk968JLHzfLQ0c6luYmSv45kd6wtt/9A/3
+3PxSL1fllZqGzNCbqcnyc78AjTdGHA==
+=YDvS
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jshawl
+
+==================================================================
