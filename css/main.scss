@@ -2,11 +2,7 @@
 ---
 
 @import 'syntax';
-@media all and (max-width:40em){
-  body{
-    font-size:75%;
-  }
-}
+
 code{
   &:before, &:after{
     content:'`';
@@ -19,8 +15,7 @@ html, body{
 }
 
 pre code{
-  font-family:'Monaco', monospace;
-  font-size: .8em;
+  font-family: monospace;
   overflow: scroll;
   display:block;
   &:before, &:after{
@@ -44,17 +39,15 @@ ul li{
 }
 
 body{
-  padding: 2em;
-  line-height: 1.5;
-  font-family: Monaco;
-  color:#222;
+  padding: .5em;
+  font-family: monospace;
   max-width:45em;
-  margin:auto;
+  color:#222;
 }
 
 h1, h2, h3, h4 {
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: inherit;
+  font-weight: normal;
 }
 
 h1:before{
