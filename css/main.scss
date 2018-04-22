@@ -2,27 +2,11 @@
 ---
 
 @import 'syntax';
-<<<<<<< HEAD
 
-code{
-  &:before, &:after{
-    content:'`';
-  }
-}
-=======
->>>>>>> back to the tmux theme
 
 $xy:6px;
 $logo-color: #000;
 
-<<<<<<< HEAD
-pre code{
-  font-family: monospace;
-  overflow: scroll;
-  display:block;
-  &:before, &:after{
-    content:'```';
-=======
 .site-title.logo{
   width:5 * $xy;
   margin-top:-$xy;
@@ -31,7 +15,6 @@ pre code{
   position:relative;
   &:after{
     content:'';
->>>>>>> back to the tmux theme
     display:block;
     position:absolute;
     left:0;
@@ -100,18 +83,6 @@ header{
   }
 }
 
-<<<<<<< HEAD
-body{
-  padding: .5em;
-  font-family: monospace;
-  max-width:45em;
-  color:#222;
-}
-
-h1, h2, h3, h4 {
-  font-size: inherit;
-  font-weight: normal;
-=======
 section{
   padding-left:4rem;
   padding-bottom:7em;
@@ -156,7 +127,6 @@ section{
 
 .left{
   float:left;
->>>>>>> back to the tmux theme
 }
 
 .center{
