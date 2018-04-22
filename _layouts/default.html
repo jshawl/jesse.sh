@@ -18,25 +18,44 @@
 
     <nav class="site-nav">
       <div class="trigger">
-        <a href='/' class='logo'>~/</a> |
-
-        {% for item in site.navigation %}
-        {% assign class = nil %}
-        {% if page.url == item.url && item.url == "/index.html" %}
-          {% assign class = 'active' %}
-        {% elsif page.url == item.url %}
-          {% assign class = 'active' %}
-        {% endif %}
-        <a href="{{ item.url }}" class="page-link js-tmux {{class}}">{{ item.title }}</a> |
-        {% endfor %}
-        <a href="mailto:jesse@jshawl.com">[jesse@jshawl.com]</a>
+	<a href="mailto:jesse@jshawl.com">[jesse@jshawl.com]</a>
+	{% for item in site.navigation %}
+	  {% assign class = nil %}
+	  {% if page.url == item.url && item.url == "/index.html" %}
+	    {% assign class = 'active' %}
+	  {% elsif page.url == item.url %}
+	    {% assign class = 'active' %}
+	  {% endif %}
+	  <a href="{{ item.url }}" class="page-link js-tmux {{class}}">{{ item.title }}</a>
+	{% endfor %}
       </div>
     </nav>
 </header>
-<hr>
+
+
 <section>
+  <div class='cf center'>
+    <div class="left"><a href='/' class='logo'>JSHAWL(1)</a></div>
+    <div class="right">JSHAWL(1)</div>
+    <a class="site-title logo" href="/"> </a>
+  </div>
       {{ content }}
 </section>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '54521d778bfdf72812001416');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+<script src='https://tallies.co/track/5777d53f2e2031075a886fdd'></script>
 <script src='/js/app.js'></script>
 
     </body>
