@@ -19,6 +19,10 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-MM-dd");
   });
 
+  eleventyConfig.addFilter("dotless", (stringWithDot) => {
+    return stringWithDot.slice(1, stringWithDot.length);
+  });
+
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
@@ -41,6 +45,7 @@ module.exports = function (eleventyConfig) {
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("js");
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({

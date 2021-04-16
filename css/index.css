@@ -169,21 +169,6 @@ ol.postlist {
   padding-left: 1.75em;
 }
 
-header {
-  padding: 2em 0;
-}
-
-body {
-  padding-top: 0;
-}
-.post{
-  padding-top: 2em;
-}
-
-.post header {
-  border-top: 2px solid #ebebeb;
-}
-.page header {
-  border-bottom: 2px solid #ebebeb;
-  margin-bottom: 2em;
+.postlist-date{
+  font-size: .6em;
 }
