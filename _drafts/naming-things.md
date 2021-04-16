@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: layouts/post.njk
+
 ---
 
 Naming things in CSS is hard.

@@ -1,5 +1,6 @@
 ---
-layout: default
+layout: layouts/post.njk
+
 title: Links
 type: page
 permalink: /finds-links/
