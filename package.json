@@ -3,7 +3,7 @@
   "description": "The website of Jesse Shawl",
   "scripts": {
     "build": "eleventy",
-    "deploy": "(git diff --quiet || echo 'refusing to deploy uncommitted changes' && exit 1) && npm run build && scp -r _site/* static:/var/www/jesse.sh/",
+    "deploy": "(git diff --quiet || (echo 'refusing to deploy uncommitted changes' && exit 1)) && npm run build && scp -r _site/* static:/var/www/jesse.sh/",
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy"
   },
