@@ -1,6 +1,6 @@
 ---
-layout: layouts/post.njk
-
+layout: layouts/page.njk
+permalink: teaches/index.html
 title: Teaching
 type: page
 events:
@@ -43,13 +43,12 @@ events:
 
 ---
 
-<h2>Teaching</h2>
 <ul>
-{% for event in page.events %}
+{% for event in events %}
 <li>
   <a href="{{event.url}}">{{event.title}}</a>
   <div class='description'>
-    {{event.description}}
+    {{event.description | safe}}
   </div>
 </li>
 {% endfor %}

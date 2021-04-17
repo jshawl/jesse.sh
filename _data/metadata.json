@@ -4,14 +4,14 @@
   "language": "en",
   "description": "Jesse Shawl",
   "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "subtitle": "I am writing about my experiences as a programmer.",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
-    "id": "https://example.com/"
+    "id": "https://jesse.sh/"
   },
   "jsonfeed": {
     "path": "/feed/feed.json",
-    "url": "https://example.com/feed/feed.json"
+    "url": "https://jesse.sh/feed/feed.json"
   },
   "author": {
     "name": "Jesse Shawl",

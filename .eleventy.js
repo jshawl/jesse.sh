@@ -2,15 +2,14 @@ const { DateTime } = require("luxon");
 const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const { execSync } = require("child_process");
 
 module.exports = function (eleventyConfig) {
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
-  eleventyConfig.addPlugin(pluginNavigation);
 
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
@@ -19,8 +18,25 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-MM-dd");
   });
 
-  eleventyConfig.addFilter("dotless", (stringWithDot) => {
-    return stringWithDot.slice(1, stringWithDot.length);
+  eleventyConfig.addNunjucksShortcode("htmlGeneratedAt", function () {
+    return new Date().toISOString();
+  });
+  eleventyConfig.addNunjucksShortcode("gitref", function () {
+    const branch = execSync("git symbolic-ref HEAD --short", {
+      cwd: "./",
+      encoding: "utf8",
+    }).trim();
+    const sha = execSync("git rev-parse HEAD | cut -c1-7", {
+      cwd: "./",
+      encoding: "utf8",
+    }).trim();
+    return `${branch}@${sha}`;
+  });
+
+  eleventyConfig.addNunjucksShortcode("sourceUrl", function (path) {
+    return (
+      "https://github.com/jshawl/jesse.sh/blob/ma" + path.slice(1, path.length)
+    );
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
