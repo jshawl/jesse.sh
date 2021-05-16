@@ -5,6 +5,7 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const { execSync } = require("child_process");
+const slugify = require("slugify");
 
 module.exports = function (eleventyConfig) {
   // Add plugins
@@ -20,6 +21,15 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addNunjucksShortcode("htmlGeneratedAt", function () {
     return new Date().toISOString();
+  });
+  
+  eleventyConfig.addFilter("slug", (input) => {
+    const options = {
+      replacement: "-",
+      remove: /[&,+()$~%.'":*?<>{}]/g,
+      lower: true,
+    };
+    return slugify(input, options);
   });
   eleventyConfig.addNunjucksShortcode("gitref", function () {
     const branch = execSync("git symbolic-ref HEAD --short", {
