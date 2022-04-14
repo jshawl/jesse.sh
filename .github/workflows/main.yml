@@ -39,4 +39,4 @@ jobs:
       - run: |
           echo "${{ secrets.SSH_KEY }}" > id
           chmod 600 id
-      - run: /usr/bin/rsync -rvz --dry-run -e 'ssh -i ./id -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no' _site/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/jesse.sh/
+      - run: /usr/bin/rsync -arvz -e 'ssh -i ./id -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no' _site/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/jesse.sh/
