@@ -37,6 +37,7 @@ jobs:
           name: _site
           path: _site
       - name: Deploy Site
+        if: github.ref == 'refs/heads/ma'
         run: |
           echo "${{ secrets.SSH_KEY }}" > id
           chmod 600 id
