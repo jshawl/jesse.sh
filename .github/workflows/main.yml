@@ -40,6 +40,6 @@ jobs:
         run: |
           echo "${{ secrets.SSH_KEY }}" > id
           chmod 600 id
-          rsync -arvz \
+          rsync -rvz \
             -e 'ssh -i ./id -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no' \
             _site/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/jesse.sh/
