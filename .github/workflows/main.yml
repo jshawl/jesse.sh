@@ -36,7 +36,10 @@ jobs:
         with:
           name: _site
           path: _site
-      - run: |
+      - name: Deploy Site
+        run: |
           echo "${{ secrets.SSH_KEY }}" > id
           chmod 600 id
-      - run: /usr/bin/rsync -arvz -e 'ssh -i ./id -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no' _site/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/jesse.sh/
+          rsync -arvz \
+            -e 'ssh -i ./id -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no' \
+            _site/ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/jesse.sh/
