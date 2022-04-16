@@ -3,7 +3,6 @@ const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
 const { execSync } = require("child_process");
 const slugify = require("slugify");
 
@@ -78,10 +77,6 @@ module.exports = function (eleventyConfig) {
     html: true,
     breaks: false,
     linkify: true,
-  }).use(markdownItAnchor, {
-    permalink: true,
-    permalinkClass: "direct-link",
-    permalinkSymbol: "#",
   });
   eleventyConfig.setLibrary("md", markdownLibrary);
 
