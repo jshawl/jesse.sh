@@ -79,6 +79,7 @@ body {
 pre,
 code {
     font-family: monaco, monospace;
+    scrollbar-width: none;
 }
 
 h1,

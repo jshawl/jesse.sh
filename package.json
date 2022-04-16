@@ -1,18 +1,20 @@
 {
   "name": "jesse.sh",
-  "description": "The website of Jesse Shawl",
+  "description": "The personal website of Jesse Shawl",
   "scripts": {
     "build": "eleventy",
-    "deploy": "(git diff --quiet || (echo 'refusing to deploy uncommitted changes' && exit 1)) && npm run build && scp -r _site/* static:/var/www/jesse.sh/",
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy"
   },
+  "engines": {
+    "node": "16.14.2",
+    "npm": "8.5.0"
+  },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "@11ty/eleventy-plugin-rss": "^1.1.1",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.0",
+    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy-plugin-rss": "^1.1.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.2.0",
     "luxon": "^1.26.0",
-    "markdown-it": "^12.0.4",
-    "markdown-it-anchor": "^7.1.0"
+    "markdown-it": "^12.0.4"
   }
 }
