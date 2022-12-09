@@ -45,7 +45,7 @@ I started out with the simple case:
 
 ```json
 {
-  age: 33
+  "age": 33
 }
 ```
 
@@ -138,9 +138,9 @@ e.g. given an object like:
 
 ```json
 {
-  name: {
-    first: "Jesse",
-    last: "Shawl"
+  "name": {
+    "first": "Jesse",
+    "last": "Shawl"
   }
 }
 ```
@@ -163,11 +163,11 @@ function TableForm({data, onChange}){
 
 Now editing the `first` input will trigger the top level `onChange` to send back the entire object:
 
-```json
+```js
 {
-  name: {
-    first: "Jesse",
-    last: "Shawl"
+  "name": {
+    "first": "Jesse",
+    "last": "Shawl"
   }
 }
 ```
