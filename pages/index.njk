@@ -1,7 +1,7 @@
 ---
 layout: layouts/page.njk
 permalink: index.html
-title: Home
+title: ""
 ---
 
 <p>
@@ -10,21 +10,16 @@ title: Home
   computer-related things that I wish had existed before I wrote them.
 </p>
 
-<p>
-  I also keep a list of my <a href="/teaches/">teaching</a> experience and
-  <a href="/projects/">projects</a> I've worked on.
-</p>
-
 <h2>Featured Projects</h2>
 
-<dl>
-  <dt><a href='https://proof.im/'>proof.im</a></dt>
-  <dd>Zero-trust digital signature proofs of identity</dd>
-  <dt><a href='https://www.cinotify.cc/'>CI Notify</a></dt>
-  <dd>Zero-configuration notifications for CI/CD pipelines.</dd>
-  <dt><a href='https://httpz.app/'>httpz</a></dt>
-  <dd>Inspect RESTful http requests.</dd>
-</dl>
+<ul>
+  <li><a href='https://saas-starter.app/'>saas-starter.app</a> Ruby on Rails boilerplate for new SaaS ventures.</li>
+  <li><a href='https://proof.im/'>proof.im</a> Zero-trust digital signature proofs of identity.</li>
+  <li><a href='https://www.cinotify.cc/'>CI Notify</a> Zero-configuration notifications for CI/CD pipelines.</li>
+  <li><a href='https://httpz.app/'>httpz.app</a> Inspect RESTful http requests.</li>
+  <li><a href='https://unqueue.herokuapp.com/'>unqueue</a> Mark all Pocket items read.</li>
+
+</ul>
 
 <h2>Useful Links</h2>
 
@@ -90,3 +85,9 @@ title: Home
 <h2>Notes</h2>
 
 {% set postslist = collections.posts %} {% include "postslist.njk" %}
+
+
+<p>
+  I also keep a list of my <a href="/teaches/">teaching</a> experience and
+  <a href="/projects/">projects</a> I've worked on.
+</p>
