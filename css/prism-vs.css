@@ -6,7 +6,7 @@
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #393A34;
-	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+	font-family: "Source Code Pro", monospace;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
@@ -25,39 +25,38 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
-pre > code[class*="language-"] {
+pre>code[class*="language-"] {
 	font-size: 1em;
 }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
 	background: #C1DEF1;
 }
 
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
 	background: #C1DEF1;
 }
 
 /* Code blocks */
 pre[class*="language-"] {
-	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
-	border: 1px solid #dddddd;
-	background-color: white;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre)>code[class*="language-"] {
 	padding: .2em;
 	padding-top: 1px;
 	padding-bottom: 1px;
 	background: #f8f8f8;
-	border: 1px solid #dddddd;
 }
 
-.token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
@@ -65,6 +64,7 @@ pre[class*="language-"] {
 	font-style: italic;
 }
 
+.token.comment,
 .token.namespace {
 	opacity: .7;
 }
@@ -75,7 +75,8 @@ pre[class*="language-"] {
 
 .token.punctuation,
 .token.operator {
-	color: #393A34; /* no highlight */
+	color: #393A34;
+	/* no highlight */
 }
 
 .token.url,
@@ -85,7 +86,7 @@ pre[class*="language-"] {
 .token.variable,
 .token.constant,
 .token.inserted {
-	color: #36acaa;
+	color: #44802e;
 }
 
 .token.atrule,
@@ -150,7 +151,7 @@ code[class*="language-css"] {
 	border-right-color: #a5a5a5;
 }
 
-.line-numbers-rows > span:before {
+.line-numbers-rows>span:before {
 	color: #2B91AF;
 }
 
