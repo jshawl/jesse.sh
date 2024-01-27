@@ -1,21 +1,21 @@
 {
   "title": "Jesse Shawl",
-  "url": "https://jesse.sh/awl",
+  "url": "https://jesse.sh/",
   "language": "en",
   "description": "Jesse Shawl",
   "feed": {
     "subtitle": "I am writing about my experiences as a programmer.",
     "filename": "feed.xml",
-    "path": "/feed/feed.xml",
+    "path": "/feed.xml",
     "id": "https://jesse.sh/"
   },
   "jsonfeed": {
-    "path": "/feed/feed.json",
-    "url": "https://jesse.sh/feed/feed.json"
+    "path": "/feed.json",
+    "url": "https://jesse.sh/feed.json"
   },
   "author": {
     "name": "Jesse Shawl",
     "email": "jesse@jesse.sh",
-    "url": "https://jesse.sh/awl"
+    "url": "https://jesse.sh/"
   }
 }
