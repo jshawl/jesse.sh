@@ -74,7 +74,6 @@ body {
 
 pre,
 code {
-    background: #fff;
     font-family: 'Source Code Pro', monospace;
     scrollbar-width: none;
     border: 1px solid #ccc;
@@ -152,19 +151,17 @@ hr {
     white-space: normal;
 }
 
+pre {
+    padding: 1em;
+}
+
 pre,
 code {
-    padding: 0.5em;
     font-size: inherit;
     overflow: scroll;
 }
 
-code {
-    padding: 0em 0.25em;
-}
-
 pre code {
-    padding: 0.5em;
     background: none;
     display: block;
 }
