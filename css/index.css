@@ -9,6 +9,10 @@ body {
     background: #fcfcfc;
 }
 
+body {
+    padding: 2em;
+}
+
 svg path {
     fill: #262626;
 }
@@ -47,23 +51,33 @@ hr {
     font-weight: bold;
 }
 
+@font-face {
+    font-family: "Cascadia Mono-SemiLight";
+    src: url("/fonts/CascadiaMono-SemiLight.woff2") format("woff2");
+}
+
 html,
 body,
 pre {
     margin: 0;
-    padding: 0;
-    font-family: monaco, monospace;
+    font-family: "Cascadia Mono-Semilight", monaco, monospace;
     line-height: 1.5;
     max-width: 900px;
     font-size: 1.125em;
 }
 
 @media all and (max-width: 40em) {
-
     html,
-    body,
-    pre {
+    body{
         font-size: 1rem;
+    }
+
+    pre {
+        font-size: 0.8rem !important;
+    }
+
+    body {
+        padding: 1em;
     }
 }
 
@@ -112,10 +126,6 @@ h4 {
 
 h1:first-of-type {
     margin-top: 0;
-}
-
-body {
-    padding: 2em;
 }
 
 hr {
@@ -189,17 +199,16 @@ pre.log {
 }
 
 ul {
-    list-style-type: none;
-}
-
-ul li:before {
-    content: '.';
-    position: absolute;
-    margin-left: -20px;
+    list-style-type: "- ";
+    padding-left: .75rem;
 }
 
 li p:first-of-type {
     margin-top: 0;
+}
+
+.icons-only {
+    list-style-type: none;
 }
 
 .icon {
