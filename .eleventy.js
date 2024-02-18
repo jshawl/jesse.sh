@@ -5,6 +5,7 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const { execSync } = require("child_process");
 const slugify = require("slugify");
+const crypto = require("crypto");
 
 module.exports = function (eleventyConfig) {
   // Add plugins
@@ -52,6 +53,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
   });
+
+  eleventyConfig.addFilter("withQueryDigest", (path) => {
+    const contents = fs.readFileSync(`.${path}`, "utf-8");
+    const digest = crypto.createHash('sha256').update(contents).digest('hex');
+    return path + `?digest=${digest}`;
+  })
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
