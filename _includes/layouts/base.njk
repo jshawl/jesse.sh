@@ -4,7 +4,7 @@
     <!-- html generated at {% htmlGeneratedAt %} on {% gitref %} -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or metadata.title }}</title>
+    <title>[js] - {{ title or metadata.title}}</title>
     <meta name="description" content="{{ description or metadata.description }}">
     <link rel="stylesheet" href="{{ '/css/index.css' | withQueryDigest }}">
     <link rel="stylesheet" href="{{ '/css/prism-vs.css' | withQueryDigest }}">
@@ -13,11 +13,70 @@
     <script defer data-domain="jesse.sh" src="https://plausible.io/js/script.js"></script>
   </head>
   <body>
+    <a href="/" class="header">
+      <header>
+        <span>JS(1)</span>
+        <span>Jesse Shawl</span>
+        <span>JS(1)</span>
+      </header>
+    </a>
     <main>
       {{ content | safe }}
     </main>
+    <div class="pager"></div>
     <footer>
-      <small><a href="{% sourceUrl page.inputPath %}">Edit this page</a></small>
+      <div class="pager js-pager">
+        <span class="pager-end">(END)</span>
+        <span class="pager-colon">:</span>
+      </div>
+      <script>
+         const updatePager = () => {
+        const pager = document.querySelector(".js-pager");
+        const { scrollTop, clientHeight, scrollHeight } =
+          document.documentElement;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+        if (isAtBottom) {
+          pager.classList.add("pager--at-bottom");
+        } else {
+          pager.classList.remove("pager--at-bottom");
+        }
+      };
+      updatePager();
+      addEventListener("scroll", updatePager);
+      addEventListener("resize", updatePager);
+      addEventListener("keydown", (e) => {
+        if (e.key === "j") window.scrollBy(0, 48);
+        if (e.key == "Enter") window.scrollBy(0, 48);
+        if (e.key === "k") window.scrollBy(0, -48);
+        if (e.key === "g") window.scrollTo(0, 0);
+        if (e.key === "G") {
+          const { scrollHeight, clientHeight } = document.documentElement;
+          window.scrollTo(0, scrollHeight - clientHeight);
+        }
+        if (e.key === "f" && e.ctrlKey) {
+          window.scrollBy(0, window.innerHeight);
+        }
+        if (e.key === "b" && e.ctrlKey) {
+          window.scrollBy(0, -window.innerHeight);
+        }
+        if (e.key === "d" && e.ctrlKey) {
+          window.scrollBy(0, window.innerHeight / 2); // Scroll down by half the viewport height
+        }
+        if (e.key === "u" && e.ctrlKey) {
+          window.scrollBy(0, -window.innerHeight / 2); // Scroll up by half the viewport height
+        }
+        if(e.key == "q") {
+          window.location = "/"
+        }
+      });
+      </script>
+      <div>
+        <span>[js] 0:<a href="/">~/{% if page.url == "/" %}*{% endif %}</a></span>
+      </div>
+      <div>
+        <span><a href="{% sourceUrl page.inputPath %}" target="_blank">{% sha %}</a></span>
+        <time>{{ page.date | readableDate}}</time>
+      </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
     <script>
