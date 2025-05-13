@@ -22,7 +22,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksShortcode("htmlGeneratedAt", function () {
     return new Date().toISOString();
   });
-  
+
   eleventyConfig.addFilter("slug", (input) => {
     const options = {
       replacement: "-",
@@ -31,21 +31,28 @@ module.exports = function (eleventyConfig) {
     };
     return slugify(input, options);
   });
+
+  const sha = () =>
+    execSync("git rev-parse HEAD | cut -c1-7", {
+      cwd: "./",
+      encoding: "utf8",
+    }).trim();
+
+  eleventyConfig.addNunjucksShortcode("sha", sha);
+
   eleventyConfig.addNunjucksShortcode("gitref", function () {
     const branch = execSync("git symbolic-ref HEAD --short", {
       cwd: "./",
       encoding: "utf8",
     }).trim();
-    const sha = execSync("git rev-parse HEAD | cut -c1-7", {
-      cwd: "./",
-      encoding: "utf8",
-    }).trim();
-    return `${branch}@${sha}`;
+    return `${branch}@${sha()}`;
   });
 
   eleventyConfig.addNunjucksShortcode("sourceUrl", function (path) {
     return (
-      "https://github.com/jshawl/jesse.sh/blob/ma" + path.slice(1, path.length)
+      "https://github.com/jshawl/jesse.sh/blob/" +
+      sha() +
+      path.slice(1, path.length)
     );
   });
 
@@ -56,9 +63,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("withQueryDigest", (path) => {
     const contents = fs.readFileSync(`.${path}`, "utf-8");
-    const digest = crypto.createHash('sha256').update(contents).digest('hex');
+    const digest = crypto.createHash("sha256").update(contents).digest("hex");
     return path + `?digest=${digest}`;
-  })
+  });
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {

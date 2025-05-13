@@ -2,14 +2,9 @@
 layout: layouts/base.njk
 templateClass: tmpl-post
 ---
-<div class='post'>
-<h1><a href="/">~/</a> {{ title }}</h1>
 
-<time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+<section>
+    <h1>{{ title }} <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></h1>
 
-{{ content | safe }}
-
-<hr>
-
-<p><a href="/">~/</a> Posted by Jesse Shawl on {{ page.date | readableDate}}</p>
-</div>
+    {{ content | safe }}
+</section>
