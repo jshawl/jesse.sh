@@ -40,7 +40,7 @@ h1:before {
 
 h1 time,
 section time {
-  color: silver;
+  color: #708090;
 }
 
 li {
@@ -55,7 +55,7 @@ ul {
 
 ul li:before {
   content: "* ";
-  color: silver;
+  color: #708090;
 }
 
 img {
