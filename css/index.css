@@ -1,5 +1,5 @@
 :root {
-  --font-size: 2rem;
+  --font-size: 1.5rem;
 }
 
 ::selection {
@@ -7,11 +7,11 @@
 }
 
 section {
-  padding-left: 3rem;
+  padding-left: 2.5rem;
 }
 
 h1 {
-  margin: 3rem 0;
+  margin: 2.5rem 0;
   padding: 0 !important;
 }
 
@@ -19,15 +19,15 @@ h1,
 h2,
 h3 {
   font: inherit;
-  margin-left: -3rem;
+  margin-left: -2.5rem;
 }
 
 @media all and (max-width: 700px) {
   :root {
-    --font-size: 1.5rem;
+    --font-size: 1.25rem;
   }
   section {
-    padding-left: 1.5rem;
+    padding-left: 1.25rem;
   }
   h1 {
     margin: 2rem;
@@ -35,7 +35,7 @@ h3 {
   h1,
   h2,
   h3 {
-    margin-left: -1.5rem;
+    margin-left: -1.25rem;
   }
 }
 
@@ -78,6 +78,11 @@ ul {
 ul li:before {
   content: "* ";
   color: #708090;
+}
+
+.postlist li {
+  display: flex;
+  gap: 1rem;
 }
 
 img {
