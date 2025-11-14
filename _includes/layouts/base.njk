@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[js] - {{ title or metadata.title}}</title>
     <meta name="description" content="{{ description or metadata.description }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,600;1,300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="{{ '/css/index.css' | withQueryDigest }}">
     <link rel="stylesheet" href="{{ '/css/prism-vs.css' | withQueryDigest }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">

@@ -2,18 +2,6 @@
   --font-size: 2rem;
 }
 
-@media all and (max-width: 700px) {
-  :root {
-    --font-size: 1.5rem;
-  }
-}
-
-@media all and (max-width: 500px) {
-  :root {
-    --font-size: 1rem;
-  }
-}
-
 ::selection {
   background-color: rgb(207, 174, 0);
 }
@@ -32,6 +20,40 @@ h2,
 h3 {
   font: inherit;
   margin-left: -3rem;
+}
+
+@media all and (max-width: 700px) {
+  :root {
+    --font-size: 1.5rem;
+  }
+  section {
+    padding-left: 1.5rem;
+  }
+  h1 {
+    margin: 2rem;
+  }
+  h1,
+  h2,
+  h3 {
+    margin-left: -1.5rem;
+  }
+}
+
+@media all and (max-width: 500px) {
+  :root {
+    --font-size: 0.85rem;
+  }
+  section {
+    padding-left: 0rem;
+  }
+  h1 {
+    margin: 1rem;
+  }
+  h1,
+  h2,
+  h3 {
+    margin-left: 0;
+  }
 }
 
 h1:before {
@@ -63,7 +85,7 @@ img {
 }
 
 body {
-  font-family: Monaco, Courier, monospace;
+  font-family: "Roboto Mono", Monaco, Courier, monospace;
   font-size: var(--font-size);
   line-height: 1.5;
   padding: 0.25rem;
