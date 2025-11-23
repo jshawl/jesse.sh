@@ -1,8 +1,8 @@
 ---
-title: static ssl nim binaries
+title: Static SSL Nim Binaries
 ---
 
-The goal: a static nim binary that can make http requests using ssl
+The goal: a static Nim binary that can make http requests using ssl
 with no dependencies or runtime configuration.
 
 This is useful for creating single-file deployables or running in minimal
@@ -44,8 +44,7 @@ Import `httpclient` and make a request:
 ```diff
 +import std / [httpclient]
  when isMainModule:
-+  discard newHttpClient().getContent("https://example.com")
-   echo("Hello, World!")
++  echo newHttpClient().getContent("https://example.com")
 ```
 
 There's an error!
