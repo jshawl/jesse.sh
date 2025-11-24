@@ -63,6 +63,7 @@ h1:before {
 h1 time,
 section time {
   color: #708090;
+  word-break: keep-all;
 }
 
 li {
