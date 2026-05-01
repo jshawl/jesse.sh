@@ -38,6 +38,11 @@ title: ""
 </section>
 
 <section>
+  <h2>Notes (<a href="{{ metadata.feed.path | url }}">rss</a>)</h2>
+  {% set postslist = collections.posts %} {% include "postslist.njk" %}
+</section>
+
+<section>
   <h2>Featured Projects</h2>
   <ul>
     <li><a href='https://github.com/jshawl/minisign/'>minisign</a> Ruby implementation of <a href='https://jedisct1.github.io/minisign/'>jedisct1/minisign</a>.</li>
@@ -46,9 +51,4 @@ title: ""
     <li><a href='https://httpz.app/'>httpz.app</a> Inspect RESTful http requests.</li>
     <li><a href='https://unqueue.herokuapp.com/'>unqueue</a> Mark all Pocket items read.</li>
   </ul>
-</section>
-
-<section>
-  <h2>Notes (<a href="{{ metadata.feed.path | url }}">rss</a>)</h2>
-  {% set postslist = collections.posts %} {% include "postslist.njk" %}
 </section>
